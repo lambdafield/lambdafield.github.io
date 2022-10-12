@@ -6,8 +6,32 @@
 a,
 a:focus,
 a:hover {
-  color: #fff;
+  color: black;
+  text-decoration: underline;
 }
+
+h1, h2, h3 {
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h1 {
+  font-size: 2.0rem;
+}
+
+
+main {
+  text-align: left;
+}
+
+p {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
 
 /* Custom default button */
 .btn-secondary,
@@ -44,11 +68,6 @@ body {
 
 .cover-container {
   max-width: 70em;
-}
-
-a {
-  color: black;
-  text-decoration: underline;
 }
 
 /*
@@ -106,7 +125,7 @@ a {
   font-weight: 700;
 }
 
-
+/*
 /*
  * Footer
  */
