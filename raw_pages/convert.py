@@ -23,11 +23,11 @@ def read_pages():
 
     pages_dict = {}
 
-    for i, filename in enumerate(raw_files):
-        title = convert_page(filename)
-        pages_dict[filename] = title
+    for i, infilename in enumerate(raw_files):
+        title, outfilename = convert_page(infilename)
+        pages_dict[outfilename] = title
 
-        if i>10: break
+        if i>20: break
 
     content = template2.render(
         pages_dict=pages_dict,
@@ -36,8 +36,8 @@ def read_pages():
     with open('../index.html', mode='w', encoding='utf-8') as wf:
         wf.write(content)
 
-def convert_page(filename):
-    with open(filename) as rf:
+def convert_page(infilename):
+    with open(infilename) as rf:
         txt = rf.readlines()
 
         title = txt[0].strip()
@@ -63,11 +63,12 @@ def convert_page(filename):
         )
 
         # with open('./temp/'+title+'.html', mode='w', encoding='utf-8') as wf:
-        with open('../'+filename.split('.')[0]+'.html', mode='w', encoding='utf-8') as wf:
+        outfilename = infilename.split('.')[0]+'.html'
+        with open('../'+outfilename, mode='w', encoding='utf-8') as wf:
             wf.write(content)
-            # print(f'... wrote {filename}')
+            # print(f'... wrote {infilename}')
 
-        return title
+        return title, outfilename
 
 def print_progress_bar(iteration, total, prefix='', suffix='', decimals=1, length=20, fill='='):
     """

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Lambdafield</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="static/css/cover.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Lambdafield</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="#">Home</a>
+            <a class="nav-link" href="pages/about.html">About</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        
+        <h2>유사도-측정</h2>
+        <span class="created-date">05/27/2014, 10:33:50</span>
+        
+        <h1>유사도 측정</h1>
+<p>한 개체와 다른 개체가 비슷한 것을 어떻게 평가할 수 있을까?</p>
+<p>친구들과 모여 본 영화를 이야기 할 때 나와 본 영화가 가장 겹치는 친구가 내 성향과 가장 비슷할 테고</p>
+<p>그 친구가 추천한 영화를 보면 후회하지 않을 수 있다.</p>
+<p>또한, 인터넷 서점에서 나와 책을 가장 비슷하게 산 사람의 책 목록을 보면 내가 좋아할 만한 책을 알 수 있을 테다.</p>
+<p>이러한 경우가 일차원 변수를 가지는 경우이다.</p>
+<p>하지만, 개체가 여러 특성을 가진다면 어떨까?</p>
+<p>음식을 설탕량, 소금량, 수분량, 고추가루량등으로 나누고 각기 다른 음식과 유사한 음식을 찾을 수도 있다.</p>
+<p>영화별로 별점을 주는 경우도 그렇다.</p>
+<p>이러한 경우가 다차원 변수를 가지게 된다.</p>
+<p>다음과 같이 다양한 방법으로 차원별 유사도를 측정할 수 있다.</p>
+<h2>1차원 변수의 유사도</h2>
+<p>1차원 변수일 경우 몇가지 방법으로 값을 얻을 수 있다. </p>
+<p>각 공식은 상당히 간단하기 때문에 python 코드로 대신하고자 한다.</p>
+<h3>타니모토 계수(Tanimoto's coefficient)</h3>
+<p>IBM 수학자인 타니모토가 세균 분류를 위해 개발되었다.</p>
+<pre><code>def tanimoto(s1, s2):
+
+    c = len(set(s1)&amp;set(s2))
+
+    return float(c) / (len(s1) + len(s2) - c)
+</code></pre>
+<h3>다이스 계수(Dice's coefficient)</h3>
+<pre><code>def dice(s1, s2):
+
+    c = len(set(s1)&amp;set(s2))
+
+    return float(2 * c) / (len(s1) + len(s2))
+</code></pre>
+<h3>자카드 계수(Jaccard's coefficient)</h3>
+<pre><code>def jaccard(s1, s2):
+
+    c = len(set(s1)&amp;set(s2))
+
+    return float(c) / (len(set(s1)|set(s2))
+</code></pre>
+<h2>다차원 변수의 유사도</h2>
+<p>다차원 변수의 유사도는 두 개체의 거리를 통해 알 수 있다.</p>
+<h3>유클리디안 거리(Euclidean distance)</h3>
+<pre><code>def euclidean(p, q):
+
+    dist = sum([(p(i)-q(i))**2 for i in range(len(p))])
+
+    return dist**0.5
+</code></pre>
+<h3>피어슨 상관계수(Pearson correlation coefficient)</h3>
+<pre><code>def pearson(x,y):
+
+    vals = range(len(x))
+
+
+
+    sumx = sum([float(x[i]) for i in vals])
+
+    sumy = sum([float(y[i]) for i in vals])
+
+
+
+    sumx_sq = sum([x[i]**2.0 for i in vals])
+
+    sumy_sq = sum([y[i]**2.0 for i in vals])
+
+
+
+    #sum of the products
+
+    p_sum = sum([x[i]*y[i] for i in vals])
+
+
+
+    num = p_sum - (sumx * sumy / n)
+
+    den = ((sumx_sq - pow(sumx, 2) / n) * (sumy_sq - pow(sumy, 2)) ** 0.5
+
+    return 1 if den == 0 else num / den
+</code></pre>
+<h2>결론</h2>
+<p>추천 시스템이나 군집화등 다양한 영역에서 유사도는 사용되고 있다.</p>
+<p>그만큼 다양한 측정법이 있으니 각 시스템의 특성이 맞게 사용하면 좀 더 나은 결과를 얻는다.</p>
+        <span class="tags">distance,similarity
+</span>
+        
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="static/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="static/js/popper.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+  </body>
+</html>
