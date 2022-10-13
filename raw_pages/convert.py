@@ -76,7 +76,7 @@ def read_pages():
 
         pages.append(p)
         
-    pages.sort(key = lambda p: p.ddate)
+    pages.sort(key=lambda p: p.ddate, reverse=True)
     content = template2.render(
         pages=pages,
     )
