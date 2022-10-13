@@ -15,7 +15,6 @@ template2 = environment.get_template('index_base.html')
 class Page:
     def __init__(self, lines):
         title = lines[0].strip()
-        title_html = '<h2>' + title + '</h2>'
         d = '<span class="created-date">' + lines[1].strip() + '</span>'
         
         # category = '<span class="category">' + lines[2].split(',') + '</span>'
@@ -33,11 +32,35 @@ class Page:
 
     def create(self, title, d, category, tags, content):
         self.title = title.strip()
-        self.d = d.strip()
-        self.category = category.strip()
-        self.tags = tags.strip()
-        self.content = content.strip()
+        self.title_html = '<h2>' + self.title + '</h2>'
 
+        self.d = d.strip()
+        self.d_html = '<span class="created-date">' + self.d + '</span>'
+
+        self.category = category.strip()
+        self.category_html = '<span class="category">' + self.category + '</span>'
+
+        self.tags = tags.strip()
+        self.tags_html = '<span class="tags">' + self.tags + '</span>'
+
+        self.content = content.strip()
+        self.content_html = markdown.markdown(content)
+
+
+    def save_as_html(self):
+        content = template.render(
+            title=self.title_html,
+            d=self.d_html,
+            category=self.category_html,
+            content_html=self.content_html,
+            tags=self.tags_html,
+        )
+
+        # with open('./temp/'+title+'.html', mode='w', encoding='utf-8') as wf:
+        outfilename = self.title + '.html'
+
+        with open('../pages/'+outfilename, mode='w', encoding='utf-8') as wf:
+            wf.write(content)
 
 
 def get_newkey():
@@ -48,16 +71,21 @@ def read_pages():
     raw_files = glob.glob('*.txt')
     total = len(raw_files)
 
-    pages_dict = {}
+    # pages_dict = {}
+    pages = []
 
     for i, infilename in enumerate(raw_files):
-        title, outfilename = convert_page(infilename)
-        pages_dict[outfilename] = title
+    # for infilename in raw_files:
+        
+        p = convert_page(infilename)
+        p.save_as_html()
 
+        pages.append(p)
+        
         if i>20: break
 
     content = template2.render(
-        pages_dict=pages_dict,
+        pages=pages,
     )
 
     with open('../index.html', mode='w', encoding='utf-8') as wf:
@@ -66,36 +94,8 @@ def read_pages():
 def convert_page(infilename):
     with open(infilename) as rf:
         lines = rf.readlines()
+        return Page(lines)
 
-        title = lines[0].strip()
-        title_html = '<h2>' + title + '</h2>'
-        d = '<span class="created-date">' + lines[1].strip() + '</span>'
-        
-        # category = '<span class="category">' + lines[2].split(',') + '</span>'
-        # tags = '<span class="tags">' + lines[3].split(',') + '</span>'
-        
-        category = '<span class="category">' + lines[2] + '</span>'
-        tags = '<span class="tags">' + lines[3] + '</span>'
-        
-
-        content = '\n'.join(lines[4:])
-        content_html = markdown.markdown(content)
-
-        content = template.render(
-            title=title_html,
-            d=d,
-            category=category,
-            content_html=content_html,
-            tags=tags,
-        )
-
-        # with open('./temp/'+title+'.html', mode='w', encoding='utf-8') as wf:
-        outfilename = infilename.split('.')[0]+'.html'
-        with open('../pages/'+outfilename, mode='w', encoding='utf-8') as wf:
-            wf.write(content)
-            # print(f'... wrote {infilename}')
-
-        return title, outfilename
 
 def print_progress_bar(iteration, total, prefix='', suffix='', decimals=1, length=20, fill='='):
     """
