@@ -31,7 +31,7 @@ def convert_page(filename):
         txt = rf.readlines()
 
         title = txt[0].strip()
-        title_html = '<h1>' + title + '</h1>'
+        title_html = '<h2>' + title + '</h2>'
         d = '<span class="created-date">' + txt[1].strip() + '</span>'
         
         # category = '<span class="category">' + txt[2].split(',') + '</span>'
