@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Lambdafield</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/cover.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Lambdafield</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="/">Home</a>
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        
+        <h2>Detecting-Outlier-1</h2>
+        <span class="created-date">01/13/2014, 19:41:58</span>
+        
+        <p>이상치 검출(Outlier detection)은 <a href="/page/imbalanced data 처리하기">imbalanced data</a>와 매우 유사한 형태라고 할 수 있다.</p>
+<p>이상치는 대부분 데이터와 다른 형태를 띄고 있고 매우 소수이다.</p>
+<p>좀 더 살펴보기 전에 몇가지 정의를 보도록 하자.</p>
+<p>Novelty Detection</p>
+<blockquote>
+<p>The training data is not polluted outliers, and we are interested in detecting</p>
+<p>anomalies in new observations</p>
+</blockquote>
+<p>Outlier Detection</p>
+<blockquote>
+<p>The training data contains outliers, and we need to fit the central</p>
+<p>mode of the training data, ignoring the deviant obserations</p>
+</blockquote>
+<p>결국, Novelty Detection은 훈련 데이터에 이상치가 있지 않고 새로운 데이터에서 이상치를 검출한다.</p>
+<p>반면, Outlier Detection은 훈련 데이터에 이상치가 포함되어 있다.</p>
+<p><a href="http://yhathq.com/">yhat</a>의 <a href="http://blog.yhathq.com/posts/detecting-outlier-car-prices-on-the-web.html">Detecting Outlier Car Prices on the Web</a>을 보면 LinearRegression을 사용하여 이상치를 검출한다.</p>
+<p>이상치는 결국 주요 데이터와 다른 데이터이기 때문에 <a href="http://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html">DBSCAN</a>을 사용하여 그룹화 되지 못한 데이터를 이상치로 간주할 수 있을 듯 하다.</p>
+<p>다음은 DBSCAN로 그룹화하는 부분인데 가장 중요한 파라미터는 eps=param.eps, min_samples=param.min_samples이다.</p>
+<pre><code>Param = namedtuple('Param', ['eps', 'min_samples'])
+
+param = Param(1.20, 5)
+
+dbscan = DBSCAN(eps=param.eps, min_samples=param.min_samples).fit(X.values)
+
+labels = dbscan.labels_
+
+unique_labels = set(labels)
+
+for k in unique_labels:
+
+    for index in np.argwhere(labels == k):
+
+        # print k, index
+
+        col = 'r' if k == -1 else 'b'
+
+        ax.scatter(df.mileage[index], df.trim_encode[index], df.price[index], c=col)
+
+ax.set_xlabel('Mileage')
+
+ax.set_ylabel('Transmission')
+
+ax.set_zlabel('Price')
+
+plt.show()
+</code></pre>
+<p>훈련 데이터에서 최적의 매개 변수를 찾는다면 실제 데이터에 적용하여 이상치를 검출할 수 있을 듯 하다.</p>
+<pre><code>https://github.com/brenden17/detecting-outlier
+</code></pre>
+<p>다음은 one class svm, elliptic envelope를 사용해 보도록 하겠다.</p>
+        <span class="tags">pandas,DBSCAN</span>
+        
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../static/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $("main").find("a").each(function(){
+        $(this).attr("href", $(this).attr("href") + ".html");
+      });
+    </script>
+  </body>
+</html>

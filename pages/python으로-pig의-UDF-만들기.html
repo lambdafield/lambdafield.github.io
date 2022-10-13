@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Lambdafield</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/cover.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Lambdafield</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="/">Home</a>
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        
+        <h2>python으로-pig의-UDF-만들기</h2>
+        <span class="created-date">02/03/2014, 06:21:06</span>
+        
+        <p>pig을 가지고 놀다 보면 어떻게 데이터를 처리할 수 있을까하는 생각이 든다.</p>
+<p>물론, 다양한 기본 함수를 제공하고 있지만 부족하다. 이럴 경우을 대비해 pig는 사용자가 만들어 사용할 수 있는 기능인 <a href="http://pig.apache.org/docs/r0.12.0/udf.html">User Defined Function</a>을 제공한다.</p>
+<p>당연히 자바로 만들어야 하겠지라고 생각했지만 다양한 언어로 구현할 수 있다. 파이썬도 예외가 아니다.</p>
+<p>사용법도 너무나 간단하다. 하지만 jython을 사용하고 있기 때문에 3.x는 지원이 안되고 웹에서 보니 특히 json을 사용할 때 문제가 되는 듯 하다.</p>
+<p>먼저, udf로 사용할 파이썬 코드를 만든다. 여기서는 util.py으로 한다.</p>
+<p>get_length함수로 제목의 글자수를 반환한다. 반환할 때 반환되는 타입을 명시해야한다.</p>
+<pre><code>@outputSchema('num:long')
+
+def get_length(name):
+
+    return len(name)
+</code></pre>
+<p>그리고 실제 사용할 pig 코드에서 REGISTER만 해 주고 함수를 호출하면 된다.</p>
+<pre><code>REGISTER 'util.py' USING jython as util
+
+movies = LOAD '/input/movie/movies_with_duplicates.csv' USING PigStorage(',') as (id:int, name:chararray, year:int, rating:double, duration:int);
+
+count_movie_name = FOREACH movies GENERATE util.get_length(name);
+
+DUMP count_movie_name;
+</code></pre>
+<p>매우 간단하지만 강력한 기능을 제공한다.</p>
+<pre><code>https://github.com/brenden17/pig-farmer/tree/master/python-udf
+</code></pre>
+        <span class="tags">udf</span>
+        
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../static/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $("main").find("a").each(function(){
+        $(this).attr("href", $(this).attr("href") + ".html");
+      });
+    </script>
+  </body>
+</html>

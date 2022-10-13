@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Lambdafield</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/cover.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Lambdafield</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="/">Home</a>
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        
+        <h2>다락방-고치다</h2>
+        <span class="created-date">10/29/2020, 05:41:24</span>
+        
+        <p><a href="/page/다락방-공구함-열쇠를-잃어버리다.">다락방-공구함-열쇠를-잃어버리다.</a>에서 고민한 문제에 대한 해결책은 의외로 쉬웠다. </p>
+<p>google appengine이 결국 문제였는데, 파이썬 2.7.9부터 urllib2에서 오류가 발생하여, 기존 google appengine을 사용하지 못했다. 해결책은 간단히 파이썬 2.7.13 최신 버전을 위한 google appengine 1.9.91을 사용하는 것. 새  google appengine 1.9.91이 많이 변경되었을 것이라는 지레 짐작으로, 다 고쳐야 할 것으로 예상했으나, 기존 코드와 호환이 되도록 되어 있었음. 새 버전을 위한 config만 좀 변경함.</p>
+<p>손 댄 김에, 뭘 좀 더 추가해야 할 것 같은데, 고민중.</p>
+        <span class="tags"></span>
+        
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../static/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $("main").find("a").each(function(){
+        $(this).attr("href", $(this).attr("href") + ".html");
+      });
+    </script>
+  </body>
+</html>

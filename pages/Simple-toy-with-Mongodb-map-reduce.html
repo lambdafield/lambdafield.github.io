@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Lambdafield</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/cover.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Lambdafield</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="/">Home</a>
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        
+        <h2>Simple-toy-with-Mongodb-map-reduce</h2>
+        <span class="created-date">01/19/2014, 18:49:13</span>
+        
+        <p>Suppose that I have my own business which is so small but deals with big money. I have been writing down financial book by myself since Jaunary of 2011. Today I want to know the months expension between 2011 and 2012.</p>
+<p>Requiremnts</p>
+<ul>
+<li>
+<p>mongodb</p>
+</li>
+<li>
+<p>mongoengine</p>
+</li>
+</ul>
+<p>Firstly, I make dummy(fake) data with mongoengine. The schema(Class) is so simple. The data is generated randomly.</p>
+<pre><code>class DailyBalance(me.Document):
+
+    dayat = me.DateTimeField(default=datetime.now)
+
+    income = me.FloatField()
+
+    expense = me.FloatField()
+</code></pre>
+<p>You would have over 30 document after running python code. Then you need to create map and reduce code on mongo. Before that, you can check some commands on mongo.</p>
+<pre><code>$mongo
+
+&gt;show dbs
+
+&gt;show collections
+
+&gt;use yearlybalancedb
+
+&gt;db.dayly_balance.find()
+</code></pre>
+<p>Open analysis.js. You need two couple of map and reduce. One of them is for conbining everyday expense to month expense. The other one is for comparing between 2011 and 2012.</p>
+<pre><code>var year = db.daily_balance.mapReduce(yearMap, yearReduce, {out:'year'});
+
+var compare = db.year.mapReduce(compareYearMap, compareYearReduce, {out:'compare'});
+</code></pre>
+<p>Finally, you will see compare collections and 12 document.</p>
+<pre><code>https://github.com/brenden17/infinity/blob/master/bigdata/mongo/year-mapreduce/readme.md
+</code></pre>
+        <span class="tags">python</span>
+        
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../static/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $("main").find("a").each(function(){
+        $(this).attr("href", $(this).attr("href") + ".html");
+      });
+    </script>
+  </body>
+</html>

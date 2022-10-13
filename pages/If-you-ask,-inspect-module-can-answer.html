@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Lambdafield</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/cover.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Lambdafield</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="/">Home</a>
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        
+        <h2>If-you-ask,-inspect-module-can-answer</h2>
+        <span class="created-date">01/12/2014, 19:03:07</span>
+        
+        <p>When you get an object, you might wonder what it is. First off, you can ask whether isfunction or isclass. If it is function, what are arguments? </p>
+<pre><code>#target function
+
+def read(arg1, arg2='math'):
+
+    print(arg1, arg2)
+
+import inspect
+
+if inspect.isfunction(read):
+
+    arg_spec = inspect.getargspec(read)
+
+    print('name    :', arg_spec[0])
+
+    print('*       :', arg_spec[1])
+
+    print('**      :', arg_spec[2])
+
+    print('defaults:', arg_spec[3])
+</code></pre>
+<p>Also, you can check Class Hierachies with getclasstree() and getmro().</p>
+<p>When I create new class, I wonder what is different between using type function and declare class. I assume that one of then has less method.</p>
+<pre><code>from inspect from getmembers
+
+class X(object):
+
+    """declare X class"""
+
+    x = 1
+
+
+
+y = type('Y', (objects,'), {'__doc__':"created by type", 'x':1})
+
+
+
+print(getmembers(X))
+
+print(getmembers(y))
+</code></pre>
+<p>Both of them are exactly the same. Two class objects have the same methods.</p>
+<p>However, I know the process of creation is a little bit different. Which means, when you declare class and then create, X class calls type.<strong>new</strong>(), type.<strong>init</strong>(). On the other hand, type function does not calls type.<strong>init</strong>().</p>
+<p>Inspect module is like an oracle.</p>
+        <span class="tags">inspect</span>
+        
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../static/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $("main").find("a").each(function(){
+        $(this).attr("href", $(this).attr("href") + ".html");
+      });
+    </script>
+  </body>
+</html>

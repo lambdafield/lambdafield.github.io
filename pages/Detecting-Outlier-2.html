@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Lambdafield</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/cover.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Lambdafield</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="/">Home</a>
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        
+        <h2>Detecting-Outlier-2</h2>
+        <span class="created-date">05/20/2014, 15:18:58</span>
+        
+        <p><a href="/page/Detecting Outlier-1">Detecting Outlier-1</a>에서 구별한 novelty와 outlier를 간략하게 다시 보면</p>
+<p>novelty deteciton는 unsupervised 학습 방법이며, 훈련 데이터에 이상치는 없는 반면, </p>
+<p>outlier detecion은 훈련 데이터에 이상치가 포함되어 있다.</p>
+<p>novelty deteciton의 대표적인 방법은 <a href="http://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html">One class SVM</a>이다.</p>
+<p>outlier detecion의 대표적인 방법은 <a href="http://scikit-learn.org/stable/modules/generated/sklearn.covariance.EllipticEnvelope.html">Elliptic evnvelop</a>이다.</p>
+<p>sklearn에서는 novelty와 outlier을 검출하는 기계 학습 도구를 제공한다.</p>
+<p>공통적으로 다음과 같이 사용한다.</p>
+<pre><code>estimator.fix(x_train)
+
+estimator.precit(x_test)
+</code></pre>
+<p>우선, 데이터의 특성을 살펴보아야 한다. 데이터가 정규 분포를 따른다면 One Class SVM을 사용하고 정규 분포가 아니라면,</p>
+<p>robust esitmator 방법인 Elliptic envelop을 사용한다.</p>
+<ul>
+<li>
+<p>일변량 - 표준 점수(z-score)를 사용하여 표본을 찾는다.</p>
+</li>
+<li>
+<p>이변량 - 독립 변수와 종속 변수의 관계성 테스트하여 특정 신뢰구간에 포함하지 않은 표본을 찾는다.</p>
+</li>
+<li>
+<p>다변량 - 마할로노비스을 사용하여 표본을 찾는다.</p>
+</li>
+</ul>
+<p>One Class SVM은 classification, regression에 사용하는 SVM의 한 분야이다. 다른 SVM 기법과 마찬가지로,</p>
+<p>커널 함수와 마진(margin)을 매개 변수로 정의 할 수 있다.</p>
+        <span class="tags">pandas,elliptic-envelop,one-class-svm</span>
+        
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../static/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $("main").find("a").each(function(){
+        $(this).attr("href", $(this).attr("href") + ".html");
+      });
+    </script>
+  </body>
+</html>

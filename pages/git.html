@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Lambdafield</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/cover.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Lambdafield</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="/">Home</a>
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        
+        <h2>git</h2>
+        <span class="created-date">06/13/2014, 02:45:48</span>
+        
+        <p>git</p>
+<p>:   리누스 토발스가 개발한 분산 버전 관리 시스템</p>
+<h2>명령어</h2>
+<ul>
+<li>
+<p>Revert</p>
+<pre><code>git checkout filename
+</code></pre>
+</li>
+<li>
+<p>Create a branch and Fetch a branch</p>
+<pre><code># create
+
+git branch -a or git branch -r
+
+git checkout -b new_branch
+
+git push origin new_branch
+
+# fetch
+
+git branch or git branch -a or git branch -r
+
+git checkout origin/new_branch
+
+git checkout -b new_branch origin/new_branch
+
+# commit
+
+git push origin/new_branch
+</code></pre>
+</li>
+<li>
+<p>Stash</p>
+<pre><code>git stash
+
+git pull
+
+git stash pop
+
+git stash list
+</code></pre>
+</li>
+</ul>
+        <span class="tags"></span>
+        
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../static/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $("main").find("a").each(function(){
+        $(this).attr("href", $(this).attr("href") + ".html");
+      });
+    </script>
+  </body>
+</html>

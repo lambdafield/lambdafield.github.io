@@ -1,10 +1,10 @@
 #!/bin/bash
 import sys
 import glob
+from datetime import datetime
 
 import markdown
 from jinja2 import Environment, FileSystemLoader
-
 
 
 environment = Environment(loader=FileSystemLoader('./template'))
@@ -15,17 +15,10 @@ template2 = environment.get_template('index_base.html')
 class Page:
     def __init__(self, lines):
         title = lines[0].strip()
-        d = '<span class="created-date">' + lines[1].strip() + '</span>'
-        
-        # category = '<span class="category">' + lines[2].split(',') + '</span>'
-        # tags = '<span class="tags">' + lines[3].split(',') + '</span>'
-        
-        category = '<span class="category">' + lines[2] + '</span>'
-        tags = '<span class="tags">' + lines[3] + '</span>'
-        
-
+        d = lines[1].strip()
+        category = lines[2]
+        tags = lines[3]
         content = '\n'.join(lines[4:])
-        content_html = markdown.markdown(content)
     
         self.create(title, d, category, tags, content)
 
@@ -35,6 +28,7 @@ class Page:
         self.title_html = '<h2>' + self.title + '</h2>'
 
         self.d = d.strip()
+        self.ddate = datetime.strptime(self.d, '%m/%d/%Y, %H:%M:%S')
         self.d_html = '<span class="created-date">' + self.d + '</span>'
 
         self.category = category.strip()
@@ -62,6 +56,8 @@ class Page:
         with open('../pages/'+outfilename, mode='w', encoding='utf-8') as wf:
             wf.write(content)
 
+    def __cmp__(self, other):
+        return cmp(self.ddate, other.ddate)
 
 def get_newkey():
     raw_files = glob.glob('*.txt')
@@ -75,15 +71,12 @@ def read_pages():
     pages = []
 
     for i, infilename in enumerate(raw_files):
-    # for infilename in raw_files:
-        
         p = convert_page(infilename)
         p.save_as_html()
 
         pages.append(p)
         
-        if i>20: break
-
+    pages.sort(key = lambda p: p.ddate)
     content = template2.render(
         pages=pages,
     )

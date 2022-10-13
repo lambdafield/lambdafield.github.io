@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Lambdafield</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/cover.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Lambdafield</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="/">Home</a>
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        
+        <h2>데이터-흐름과-관리</h2>
+        <span class="created-date">01/24/2014, 06:42:20</span>
+        
+        <p>데이터를 처리하는 프로젝트를 하지 않고 이런 저런 생각을 해 보니, 검증되지 않은 여러가지 생각을 하게 된다.</p>
+<p>보통 데이터는 데이터베이스에 저장된다. 생성, 갱신, 삭제와 같은 기본적인 기능을 충실히 사용할 수 있을 뿐만 아니라, 백업등 다양한 기능을 지원하기 때문이다.</p>
+<p>하지만 기계 학습에 바로 적용하기에는 부족하다. 우선, 정제되지 않은 데이터일 경우가 많을 수 있고 </p>
+<p>기계 학습에서는 전처리 과정이 매우 중요하여 데이터를 계속적으로 변형해야 할 경우가 많은데 그때마다 계속 저장하는게 깔끔하지 않다.</p>
+<p>그래서 다음과 같은 데이터의 흐름을 생각해 본다.</p>
+<p>Mongodb -&gt; Pandas </p>
+<p><a href="5657382461898752">mongodb 데이터를 pandas 데이터로 변환하기</a>에서 mongodb 데이터를 DataFrame으로 변환한다.</p>
+<p>이렇게 함으로써 이후부터는 얼마든지 자유롭게 데이터를 가공할 수 있다. 인코딩을 하거나 표준화나 정규화를 하거나 일부 필요없는 값들은 지울 수도 있다.</p>
+<p>이렇게 처리된 데이터는 다음 번에 사용할 수 있도록 다시 저장하면 좋다. </p>
+<p>데이터가 크면 클수록 처리하는 시간이 길어지니 이후 시간 절약을 위해 필요한 작업이라 할 수 있다.</p>
+<p>Mongodb -&gt; Pandas -&gt; HDF5</p>
+<p>이 단계에서 HDF5를 사용하여 저장한다(<a href="5733935958982656">HDF5로 데이터 저장하기</a>).</p>
+<p>기계 학습에서는 수치형으로 데이터를 처리하기 때문에 HDF5에 numpy의 array로 저장하는 장점 잘 살릴 수 있다.</p>
+<p>여기까지는 단계적으로 처리 할 수 있고, 해 보았지만 더 나아가 데이터간에 관계나 최종 관계를 DB에 다시 저장하면 시스템에서 사용하기 편할 듯 하다.</p>
+<p>Mongodb -&gt; Pandas -&gt; HDF5 -&gt; Mongodb</p>
+<p>좀 더 생각해 보아야겠지만 뭐 어차피 프로젝트에 사용해 보거나 사용할지 모르는 상태에서 잡생각같다.</p>
+        <span class="tags">mongodb,pandas,hdf5,h5py,scikit-learn</span>
+        
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../static/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $("main").find("a").each(function(){
+        $(this).attr("href", $(this).attr("href") + ".html");
+      });
+    </script>
+  </body>
+</html>

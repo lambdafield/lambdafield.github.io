@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Lambdafield</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/cover.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Lambdafield</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="/">Home</a>
+            <a class="nav-link" href="/pages/about.html">About</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        
+        <h2>IPython-병렬처리로-sklearn의-GridSearch를-만들기</h2>
+        <span class="created-date">01/12/2014, 19:38:24</span>
+        
+        <p>sklearn을 사용할 때, 실험 데이터가 커지거나 특히, 적용해 보고자 하는 파라미터가 많을 때 시간이 많이 걸린다.</p>
+<p>이런 문제를 해결하기 위해 <a href="http://star.mit.edu/cluster/">starcluster</a>와 같은 병렬처리로 속도를 낼 수 있다.</p>
+<p>Ipython도 병렬처리를 지원하다. CPU 개수로 process를 관리할 수 있는 장점이 있다.</p>
+<p>BaseSearchCV를 상속 받아 GridSearchCV을 구현하므로 sklearn 라이브러리에서 그대로 사용할 수 있는 장점이 있다.</p>
+<p>다음 소스를 참고한다.</p>
+<pre><code>https://github.com/brenden17/IPyGridSearchCV
+</code></pre>
+        <span class="tags">gridsearch</span>
+        
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../static/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $("main").find("a").each(function(){
+        $(this).attr("href", $(this).attr("href") + ".html");
+      });
+    </script>
+  </body>
+</html>
