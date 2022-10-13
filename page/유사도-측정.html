@@ -24,7 +24,7 @@
           <h3 class="masthead-brand"><a href="/">Lambdafield</a></h3>
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link active" href="/">Home</a>
-            <a class="nav-link" href="/pages/about.html">About</a>
+            <a class="nav-link" href="/about.html">About</a>
           </nav>
         </div>
       </header>
@@ -34,7 +34,7 @@
         <h2>유사도-측정</h2>
         <span class="created-date">05/27/2014, 10:33:50</span>
         
-        <h1>유사도 측정</h1>
+        <h1 id="_1">유사도 측정</h1>
 <p>한 개체와 다른 개체가 비슷한 것을 어떻게 평가할 수 있을까?</p>
 <p>친구들과 모여 본 영화를 이야기 할 때 나와 본 영화가 가장 겹치는 친구가 내 성향과 가장 비슷할 테고</p>
 <p>그 친구가 추천한 영화를 보면 후회하지 않을 수 있다.</p>
@@ -45,10 +45,10 @@
 <p>영화별로 별점을 주는 경우도 그렇다.</p>
 <p>이러한 경우가 다차원 변수를 가지게 된다.</p>
 <p>다음과 같이 다양한 방법으로 차원별 유사도를 측정할 수 있다.</p>
-<h2>1차원 변수의 유사도</h2>
+<h2 id="1">1차원 변수의 유사도</h2>
 <p>1차원 변수일 경우 몇가지 방법으로 값을 얻을 수 있다. </p>
 <p>각 공식은 상당히 간단하기 때문에 python 코드로 대신하고자 한다.</p>
-<h3>타니모토 계수(Tanimoto's coefficient)</h3>
+<h3 id="tanimotos-coefficient">타니모토 계수(Tanimoto&rsquo;s coefficient)</h3>
 <p>IBM 수학자인 타니모토가 세균 분류를 위해 개발되었다.</p>
 <pre><code>def tanimoto(s1, s2):
 
@@ -56,30 +56,30 @@
 
     return float(c) / (len(s1) + len(s2) - c)
 </code></pre>
-<h3>다이스 계수(Dice's coefficient)</h3>
+<h3 id="dices-coefficient">다이스 계수(Dice&rsquo;s coefficient)</h3>
 <pre><code>def dice(s1, s2):
 
     c = len(set(s1)&amp;set(s2))
 
     return float(2 * c) / (len(s1) + len(s2))
 </code></pre>
-<h3>자카드 계수(Jaccard's coefficient)</h3>
+<h3 id="jaccards-coefficient">자카드 계수(Jaccard&rsquo;s coefficient)</h3>
 <pre><code>def jaccard(s1, s2):
 
     c = len(set(s1)&amp;set(s2))
 
     return float(c) / (len(set(s1)|set(s2))
 </code></pre>
-<h2>다차원 변수의 유사도</h2>
+<h2 id="_2">다차원 변수의 유사도</h2>
 <p>다차원 변수의 유사도는 두 개체의 거리를 통해 알 수 있다.</p>
-<h3>유클리디안 거리(Euclidean distance)</h3>
+<h3 id="euclidean-distance">유클리디안 거리(Euclidean distance)</h3>
 <pre><code>def euclidean(p, q):
 
     dist = sum([(p(i)-q(i))**2 for i in range(len(p))])
 
     return dist**0.5
 </code></pre>
-<h3>피어슨 상관계수(Pearson correlation coefficient)</h3>
+<h3 id="pearson-correlation-coefficient">피어슨 상관계수(Pearson correlation coefficient)</h3>
 <pre><code>def pearson(x,y):
 
     vals = range(len(x))
@@ -110,7 +110,7 @@
 
     return 1 if den == 0 else num / den
 </code></pre>
-<h2>결론</h2>
+<h2 id="_3">결론</h2>
 <p>추천 시스템이나 군집화등 다양한 영역에서 유사도는 사용되고 있다.</p>
 <p>그만큼 다양한 측정법이 있으니 각 시스템의 특성이 맞게 사용하면 좀 더 나은 결과를 얻는다.</p>
         <span class="tags">distance,similarity</span>

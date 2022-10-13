@@ -24,7 +24,7 @@
           <h3 class="masthead-brand"><a href="/">Lambdafield</a></h3>
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link active" href="/">Home</a>
-            <a class="nav-link" href="/pages/about.html">About</a>
+            <a class="nav-link" href="/about.html">About</a>
           </nav>
         </div>
       </header>
@@ -34,12 +34,12 @@
         <h2>Sankey-Diagram-그리기</h2>
         <span class="created-date">09/01/2014, 23:15:05</span>
         
-        <h1>Sankey Diagram</h1>
+        <h1 id="sankey-diagram">Sankey Diagram</h1>
 <p>Sankey Diagram은 흐름도(flow diagram)의 일종으로, 시스템에서 에너지나 물질의 양이 어떻게 이동하는지를 나타낸다. 화살표의 방향은 이동 방향이며, 굵기는 대상의 양이 된다. 대표적인 사용예는 1812년 나폴레옹이 러시아로 진군하면서 변화된 군사 수를 도표화한 것이다.</p>
 <p><img alt="Alt text" src="http://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Minard.png/400px-Minard.png" title="Sankey Diagram" /> </p>
 <p>출처 : <a href="http://en.wikipedia.org/wiki/Sankey_diagram">wikipedia</a></p>
 <p>좀 더 다양한 sankey diagram은 http://www.sankey-diagrams.com/에서 볼 수 있다.</p>
-<h1>D3.js로 Sankey Diagram 그리기</h1>
+<h1 id="d3js-sankey-diagram">D3.js로 Sankey Diagram 그리기</h1>
 <p>D3.js에 관해 무료로 볼 수 있는 책 <a href="https://leanpub.com/D3-Tips-and-Tricks">D3 Tips and Tricks</a>에서 sankey diagram을 그릴 수 있는 함수를 만들어 놓아 그리 어렵지 않게 사용할 수 있다. 지금 그리고자 하는 데이터는 <a href="http://water.usgs.gov/edu/watercyclekoreanhi.html">지구의 물 비율</a>이다. 지구의 물은 97%로 바닷물이 절대적 많아 그대로 그린다면 다른 물의 양은 거의 보이지 않기 때문에 다음과 같이 변경하였다.</p>
 <pre><code>{
 
@@ -96,7 +96,7 @@
 ]}
 </code></pre>
 <p>http://embed.plnkr.co/J4o5pmDjYLFsTkYdQjp0/preview에서 그린 도표를 확인할 수 있으며 코드도 함께 볼 수 있다.</p>
-<h1>참고</h1>
+<h1 id="_1">참고</h1>
 <ul>
 <li>
 <p>https://gist.github.com/d3noob/c2637e28b79fb3bfea13/</p>

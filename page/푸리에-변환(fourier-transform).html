@@ -24,7 +24,7 @@
           <h3 class="masthead-brand"><a href="/">Lambdafield</a></h3>
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link active" href="/">Home</a>
-            <a class="nav-link" href="/pages/about.html">About</a>
+            <a class="nav-link" href="/about.html">About</a>
           </nav>
         </div>
       </header>
@@ -34,12 +34,12 @@
         <h2>푸리에-변환(fourier-transform)</h2>
         <span class="created-date">07/02/2014, 10:26:12</span>
         
-        <h1>파동(Wave)</h1>
-<h2>파동이란</h2>
+        <h1 id="wave">파동(Wave)</h1>
+<h2 id="_1">파동이란</h2>
 <p><a href="http://ko.wikipedia.org/wiki/%ED%8C%8C%EB%8F%99">파동</a>은 매질을 통해 운동이나 에너지가 전달되는 현상이다. 쉽게 말해, 흔들림이고 이 흔들림에는 에너지가 있다. 쓰나미를 생각해 보자. 쓰나미는 바다속 어딘가에서 강한 에너지가 생겨 바닷물이라는 매질을 통해 전달되어 생긴다. 빛이 파동이라고 믿던 시절 <a href="http://ko.wikipedia.org/wiki/%EC%97%90%ED%85%8C%EB%A5%B4_%28%EB%AC%BC%EB%A6%AC%29">마이켈슨-몰리실험</a>으로 빛의 매질이라고 생각했던 에테르(aether)를 찾고자 했다. 물론 에테르를 존재하지 않았고 이 실험은 부정실험으로 유명하다. 빅뱅 이론의 단초가 되었던 은하계가 멀어지고 있는 사실을 어떻게 알았을까? <a href="http://ko.wikipedia.org/wiki/%EB%8F%84%ED%94%8C%EB%9F%AC_%ED%9A%A8%EA%B3%BC">도플러 효과</a>이다. 빛의 발원지가 이동하면 그 파동의 모양도 변화함에 따라 점점 더 은하계가 멀어지고 있다는 사실을 알았다. 소리, 통신 신호, 나아가면 전자까지도 파동이다. 이렇듯 우리 주변에는 온통 파동이다. 그럼 어떻게 파동을 다룰 수 있을까?</p>
-<h2>푸리에</h2>
+<h2 id="_2">푸리에</h2>
 <p>푸리에(Jean Baptiste Joseph, Baron de Fourier)는 19세기 나폴레옹과 동시대에 살았으며 스승은 라그랑쥐(Joseph Louis Lagrange), 라플라스(Pierre-Simon Laplace)이다. 더욱이 제자는 디리클레(Johann Peter Gustav Lejeune Dirichlet)이다. 말 그대로 새로운 시대의 서막이였다. 푸리에는 제봉사의 아들로 태어났으며 유년기에 부모를 모두 잃었지만 천재성과 달변을 가지고 있었다. 그는 물체를 가열할 때 열이 전달되는 방식을 연구했는데 이때 열이 퍼져 나가는 상태를 파동으로 나타낼 수 있다는 점과 파동의 재미있는 수학적 특성을 알아내었다.</p>
-<h2>푸리에 변환</h2>
+<h2 id="_3">푸리에 변환</h2>
 <p>푸리에 변환 전계는 간략하게 다음과 같다.</p>
 <ol>
 <li>
@@ -208,9 +208,9 @@ plot_wav_fft_demo()
 <p><img alt="alt text" src="/static/images/sine_10000_wav_fft_.png" title="sin10000" /></p>
 <p>주파수가 다르기 때문에 다른 값이 나온다. 마지막으로 두개가 합해진 파동을 변환하면 두 요소를 볼 수 있다.</p>
 <p><img alt="alt text" src="/static/images/sine_mix_wav_fft_.png" title="sin mix" /></p>
-<h2>활용</h2>
-<p>파동을 푸리에 변환을 하면 구성하고 있는 주파수로 볼 수 있다. 즉, 파동의 특징을 볼 수 있다는 점이다. 이러한 특징으로 가장 기본적으로 '가', '나', '다'와 같은 기본 음절을 구별할 수 있거나 목소리로 남자와 여자를 구별할 수 있다. 가장 큰 계수를 가지는 주파수 2, 3개를 선택하여 각 음절별로 비교해 보면 차이점 있다. </p>
-<h2>맺음말</h2>
+<h2 id="_4">활용</h2>
+<p>파동을 푸리에 변환을 하면 구성하고 있는 주파수로 볼 수 있다. 즉, 파동의 특징을 볼 수 있다는 점이다. 이러한 특징으로 가장 기본적으로 &lsquo;가&rsquo;, &lsquo;나&rsquo;, &lsquo;다&rsquo;와 같은 기본 음절을 구별할 수 있거나 목소리로 남자와 여자를 구별할 수 있다. 가장 큰 계수를 가지는 주파수 2, 3개를 선택하여 각 음절별로 비교해 보면 차이점 있다. </p>
+<h2 id="_5">맺음말</h2>
 <p>지금까지 파동과 푸리에 변환을 살펴 보았다. 푸리에 변환을 사용하면 소리, 전파와 같은 파동의 특성을 쉽게 파악할 수 있으며, 수학적으로 미분, 적분, 함수의 연속성, 복소수등 다양하게 영향을 미쳤다.</p>
         <span class="tags">scipy,matplotlib,transform</span>
         

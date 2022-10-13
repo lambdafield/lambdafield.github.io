@@ -24,7 +24,7 @@
           <h3 class="masthead-brand"><a href="/">Lambdafield</a></h3>
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link active" href="/">Home</a>
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="/about.html">About</a>
           </nav>
         </div>
       </header>
@@ -32,7 +32,7 @@
       <main role="main" class="inner cover">
         <h2>Pages</h2>
         <ul>
-        {% for p in pages %}
+        {% for p in pages|reverse %}
           <li> <a href="page/{{ p.title }}">{{ p.title }}</a> {{ p.d_html }}</li>
         {% endfor %}
         </ul>

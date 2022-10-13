@@ -24,7 +24,7 @@
           <h3 class="masthead-brand"><a href="/">Lambdafield</a></h3>
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link active" href="/">Home</a>
-            <a class="nav-link" href="/pages/about.html">About</a>
+            <a class="nav-link" href="/about.html">About</a>
           </nav>
         </div>
       </header>
@@ -48,42 +48,42 @@
 <p><a href="http://pig.apache.org/docs/r0.12.0/func.html">apache</a> </p>
 </li>
 </ul>
-<h1>LOAD</h1>
+<h1 id="load">LOAD</h1>
 <p>데이터 로드하기</p>
 <pre><code>grunt&gt; movies = LOAD '/input/movie/movies_data.csv' USING PigStorage(',') as (id:int, name:chararray, year:int, rating:double, duration:int);
 </code></pre>
 <p>열 이름 옆에 타입을 명시하면 차후 type casting할 필요가 없다. </p>
-<h1>FILTER</h1>
+<h1 id="filter">FILTER</h1>
 <p>필요한 정보만 걸러내기</p>
 <pre><code>grunt&gt; movies_between_50_60 = FILTER movies by year&gt;1950 and year&lt;1960;
 
 grunt&gt; movies_between_50_60_starting_with_a = FILTER movies_between_50_60 by name matches 'A.*';
 </code></pre>
-<h1>FOREACH</h1>
+<h1 id="foreach">FOREACH</h1>
 <p>각 열을 처리하기 위해 사용. 열을 걸러낼 수도 있음</p>
 <pre><code>grunt&gt; movies_duration = FOREACH movies GENERATE name, (double)(duration/60);
 </code></pre>
-<h1>GROUP</h1>
+<h1 id="group">GROUP</h1>
 <p>하나 이상 열로 그룹화 할 수 있음</p>
 <pre><code>grunt&gt; grouped_by_year = GROUP movies BY year;
 
 grunt&gt; count_by_year = FOREACH grouped_by_year GENERATE group, COUNT(movies);
 </code></pre>
-<h1>ORDER BY</h1>
+<h1 id="order-by">ORDER BY</h1>
 <p>순서화하기 </p>
 <pre><code>grunt&gt; desc_movies_by_year = ORDER movies BY year DESC;
 
 grunt&gt; desc_movies_by_year = ORDER movies BY year ASC;
 </code></pre>
-<h1>DISTINCT</h1>
+<h1 id="distinct">DISTINCT</h1>
 <p>중복 제거하기</p>
 <pre><code>grunt&gt; movies = DISTINCT movies;
 </code></pre>
-<h1>LIMIT</h1>
+<h1 id="limit">LIMIT</h1>
 <p>필요한 개수만 가져오기</p>
 <pre><code>grunt&gt; top_10_movies = LIMIT movies 10;
 </code></pre>
-<h1>아주 간단한 예제</h1>
+<h1 id="_1">아주 간단한 예제</h1>
 <p>별점을 많이 받은 영화 top 10을 구해보자.</p>
 <pre><code>grunt&gt; raw_dep_movies = LOAD '/input/movie/movies_data.csv' USING PigStorage(',') as (id:int, name:chararray, year:int, rating:double, duration:int);
 

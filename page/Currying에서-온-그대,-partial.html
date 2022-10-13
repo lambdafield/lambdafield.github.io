@@ -24,7 +24,7 @@
           <h3 class="masthead-brand"><a href="/">Lambdafield</a></h3>
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link active" href="/">Home</a>
-            <a class="nav-link" href="/pages/about.html">About</a>
+            <a class="nav-link" href="/about.html">About</a>
           </nav>
         </div>
       </header>
@@ -37,7 +37,7 @@
         <p>파이썬은 다중 파라다임 언어이다. 이 말은 어떤 문제를 명령형(Imperative)으로 해결할 수도 있으며,</p>
 <p>객체지향(Objective)으로 해결할 수도 있고, 함수형(Functional)으로 해결할 수 있다는 뜻이다.</p>
 <p>그러면 어떠한 함수와 특징이 파이썬을 함수형 언어라고 하는지 살펴보도록 한다.</p>
-<h2>partial 함수</h2>
+<h2 id="partial">partial 함수</h2>
 <p>함수적 특징을 가진 가장 기본적인 map, reduce, filter와 같은 함수 이외에 </p>
 <p><a href="https://docs.python.org/2.7/library/functools.html#functools.partial">partial</a> 함수가 있다.</p>
 <p>partial 함수는 함수형 언어의 특징을 아주 잘 나타낸다.</p>
@@ -60,7 +60,7 @@ add_one(10)
 </code></pre>
 <p>이로써 단순하게는 함수를 재사용할 수 있으며 새로운 함수를 정의하여 가독성을 높일 수 있는 장점이 있을 수 있다.</p>
 <p>그러면 partial 함수는 어디서 왔을까? 필요하기 때문에 만들었을 수도 있지만 어디서 사용되어 왔을 수도 있다.</p>
-<h2>종의 기원</h2>
+<h2 id="_1">종의 기원</h2>
 <ul>
 <li>
 <p>기계의 메모리가 충분하고 CPU가 강력하다면 이 세상에 모든 문제를 해결할 수 있을까? </p>
@@ -86,7 +86,7 @@ x -&gt; (y -&gt; x * x + y * y) # currying
 </code></pre>
 <p>함수형 언어의 특징인 <a href="http://ko.wikipedia.org/wiki/1%EC%B0%A8_%EB%85%BC%EB%A6%AC">1차 논리</a>(first-order logic)도 잘 보여준다.</p>
 <p>참고로, 프로그램 언어의 특징을 구별하는 <a href="http://en.wikipedia.org/wiki/First-class_citizen">first class citizen</a>를 보면 재미있다.</p>
-<h2>진화</h2>
+<h2 id="_2">진화</h2>
 <p>사실, 파이썬에서 partial 함수의 반환값은 partial 객체이다. </p>
 <p>그래서 partial 객체는 원함수(예제의 add 함수)의 메타정보를 가지 않는 불편함이 생긴다.</p>
 <p>아래와 같이 이전에 정의한 add_one 함수의 메타 정보를 호출하면 오류가 발생한다.</p>
@@ -137,7 +137,7 @@ example.__name__
 
 example.__doc__
 </code></pre>
-<h2>결론</h2>
+<h2 id="_3">결론</h2>
 <p>지금까지 파이썬 partial 함수로 함수형 언어의 기원과 특징은 아주 간략하게 보았다.</p>
 <p>파이썬은 사용하기에 따라 매우 쉬운 언어이기도 하지만 매우 심도있는 언어이기도 하다(다른 언어도 그렇지만). </p>
 <p>같은 문제를 다양한 해결법으로 해결할 수 있는 재미있는 언어이다.</p>

@@ -24,7 +24,7 @@
           <h3 class="masthead-brand"><a href="/">Lambdafield</a></h3>
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link active" href="/">Home</a>
-            <a class="nav-link" href="/pages/about.html">About</a>
+            <a class="nav-link" href="/about.html">About</a>
           </nav>
         </div>
       </header>
@@ -34,11 +34,11 @@
         <h2>D3.js을-활용하여-서열-그리기</h2>
         <span class="created-date">05/14/2014, 08:18:11</span>
         
-        <h1>D3.js을 활용하여 서열 그리기</h1>
+        <h1 id="d3js">D3.js을 활용하여 서열 그리기</h1>
 <p><a href="http://d3js.org/">D3.js</a>(Data-Driven Documents)는 웹브라우저에서 데이터를 효과적으로 표현하고 사용자와 상호작용할 수 있도록 개발된 자바스크립트 라이브러리이다. 2011년부터 개발을 시작하여 2014년 4월에 3.4.6버전을 내놓았다.</p>
-<h2>소개</h2>
+<h2 id="_1">소개</h2>
 <p>개발자나 데이터 과학자는 잘 정제된 결과 데이터나 의미있는 데이터를 어떻게 잘 보여줄 수 있을까 많은 걱정을 해 왔다. 다양한 시각화 라이브러리가 있으나 값이 비싸거나 특수한 시스템에서만 작동하기 때문이다. D3.js는 열린 공간인 웹에서 쉽고 다양하게 데이터를 표현할 수 있게하여 큰 호응을 얻고 있다.</p>
-<h2>서열 그리기</h2>
+<h2 id="_2">서열 그리기</h2>
 <p>지금부터 가벼운 예제로 D3.js(version:3.4.6)를 사용해 보도록 하겠다. 다음과 같은 패키지를 설치해야하나 클라이언트가 중심이 되기 때문에 원하지 않을 경우 설치하지 않아도 좋다. 서버측에서는 두 서열을 비교하여 데이터를 전송하고 클라이언트측에서는 데이터를 보기 쉽게 표현한다.</p>
 <blockquote>
 <p>pip install -U flask</p>
@@ -57,9 +57,9 @@ return json.dumps(data)
 <blockquote>
 <p>[{키:값}, {키:값}, {키:값}, {키:값}, {키:값}]</p>
 </blockquote>
-<p>실제 결과 서열은 다음과 같다. "d"는 비교 서열1, "s"는 비교 서열2를 나타낸다.</p>
+<p>실제 결과 서열은 다음과 같다. &ldquo;d&rdquo;는 비교 서열1, &ldquo;s&rdquo;는 비교 서열2를 나타낸다.</p>
 <blockquote>
-<p>[{"d": "T", "s": "A"}, {"d": "T", "s": "C"}, {"d": "-", "s": "C"}, {"d": "A", "s": "A"}, {"d": "-", "s": "C"}, {"d": "-", "s": "T"}, {"d": "G", "s": "G"}, {"d": "-", "s": "A"}, {"d": "T", "s": "T"}, {"d": "-", "s": "C"}, {"d": "-", "s": "G"}, {"d": "A", "s": "A"}, {"d": "-", "s": "A"}, {"d": "A", "s": "A"}, {"d": "-", "s": "T"}, {"d": "-", "s": "T"}, {"d": "G", "s": "G"}, {"d": "-", "s": "T"}, {"d": "G", "s": "G"}, {"d": "-", "s": "G"}, {"d": "C", "s": "C"}, {"d": "C", "s": "C"}, {"d": "A", "s": "-"}, {"d": "A", "s": "-"}, {"d": "A", "s": "-"}, {"d": "C", "s": "C"}, {"d": "G", "s": "G"}, {"d": "-", "s": "T"}]</p>
+<p>[{&ldquo;d&rdquo;: &ldquo;T&rdquo;, &ldquo;s&rdquo;: &ldquo;A&rdquo;}, {&ldquo;d&rdquo;: &ldquo;T&rdquo;, &ldquo;s&rdquo;: &ldquo;C&rdquo;}, {&ldquo;d&rdquo;: &ldquo;-&ldquo;, &ldquo;s&rdquo;: &ldquo;C&rdquo;}, {&ldquo;d&rdquo;: &ldquo;A&rdquo;, &ldquo;s&rdquo;: &ldquo;A&rdquo;}, {&ldquo;d&rdquo;: &ldquo;-&ldquo;, &ldquo;s&rdquo;: &ldquo;C&rdquo;}, {&ldquo;d&rdquo;: &ldquo;-&ldquo;, &ldquo;s&rdquo;: &ldquo;T&rdquo;}, {&ldquo;d&rdquo;: &ldquo;G&rdquo;, &ldquo;s&rdquo;: &ldquo;G&rdquo;}, {&ldquo;d&rdquo;: &ldquo;-&ldquo;, &ldquo;s&rdquo;: &ldquo;A&rdquo;}, {&ldquo;d&rdquo;: &ldquo;T&rdquo;, &ldquo;s&rdquo;: &ldquo;T&rdquo;}, {&ldquo;d&rdquo;: &ldquo;-&ldquo;, &ldquo;s&rdquo;: &ldquo;C&rdquo;}, {&ldquo;d&rdquo;: &ldquo;-&ldquo;, &ldquo;s&rdquo;: &ldquo;G&rdquo;}, {&ldquo;d&rdquo;: &ldquo;A&rdquo;, &ldquo;s&rdquo;: &ldquo;A&rdquo;}, {&ldquo;d&rdquo;: &ldquo;-&ldquo;, &ldquo;s&rdquo;: &ldquo;A&rdquo;}, {&ldquo;d&rdquo;: &ldquo;A&rdquo;, &ldquo;s&rdquo;: &ldquo;A&rdquo;}, {&ldquo;d&rdquo;: &ldquo;-&ldquo;, &ldquo;s&rdquo;: &ldquo;T&rdquo;}, {&ldquo;d&rdquo;: &ldquo;-&ldquo;, &ldquo;s&rdquo;: &ldquo;T&rdquo;}, {&ldquo;d&rdquo;: &ldquo;G&rdquo;, &ldquo;s&rdquo;: &ldquo;G&rdquo;}, {&ldquo;d&rdquo;: &ldquo;-&ldquo;, &ldquo;s&rdquo;: &ldquo;T&rdquo;}, {&ldquo;d&rdquo;: &ldquo;G&rdquo;, &ldquo;s&rdquo;: &ldquo;G&rdquo;}, {&ldquo;d&rdquo;: &ldquo;-&ldquo;, &ldquo;s&rdquo;: &ldquo;G&rdquo;}, {&ldquo;d&rdquo;: &ldquo;C&rdquo;, &ldquo;s&rdquo;: &ldquo;C&rdquo;}, {&ldquo;d&rdquo;: &ldquo;C&rdquo;, &ldquo;s&rdquo;: &ldquo;C&rdquo;}, {&ldquo;d&rdquo;: &ldquo;A&rdquo;, &ldquo;s&rdquo;: &ldquo;-&ldquo;}, {&ldquo;d&rdquo;: &ldquo;A&rdquo;, &ldquo;s&rdquo;: &ldquo;-&ldquo;}, {&ldquo;d&rdquo;: &ldquo;A&rdquo;, &ldquo;s&rdquo;: &ldquo;-&ldquo;}, {&ldquo;d&rdquo;: &ldquo;C&rdquo;, &ldquo;s&rdquo;: &ldquo;C&rdquo;}, {&ldquo;d&rdquo;: &ldquo;G&rdquo;, &ldquo;s&rdquo;: &ldquo;G&rdquo;}, {&ldquo;d&rdquo;: &ldquo;-&ldquo;, &ldquo;s&rdquo;: &ldquo;T&rdquo;}]</p>
 </blockquote>
 <p>이러한 데이터를 그리기 위해 먼저 그림판을 만들어야 한다. D3.js는 jquery와 마찬가지로 선택자(selector)를 사용하여 객체를 얻는다. <svg class="chart"></svg>을 객체로 얻은 후 연결문법(chain)을 사용하여 속성을 지정한다.</p>
 <pre><code>var svgWidth = 820, svgHeight = 220;
@@ -76,7 +76,7 @@ var svg = d3.select(".chart")
 <p>가져온 데이터는 두 번째 매개 변수에 정의된 함수로 처리한다. 데이터는 리스트 형태로 되어있기 때문에 각각의 데이터(딕션너리)를 처리하기 위해 리스트의 forEach() 메쏘드를 사용하여 처리한다.</p>
 <pre><code>data.forEach(function (value, index, array) {});
 </code></pre>
-<p>value는 하나의 데이터이며, index는 순서를 나타낸다. 이전에 만든 svg에 "g" 태그를 추가하고 사각형을 만든다. </p>
+<p>value는 하나의 데이터이며, index는 순서를 나타낸다. 이전에 만든 svg에 &ldquo;g&rdquo; 태그를 추가하고 사각형을 만든다. </p>
 <pre><code>svg.append("g")
 
         .attr("transform", "translate(" + 20 * index + ", 0)").append("rect")
@@ -100,7 +100,7 @@ var svg = d3.select(".chart")
 
         .text(value.s);
 </code></pre>
-<h2>상호작용 - 이벤트</h2>
+<h2 id="-">상호작용 - 이벤트</h2>
 <p>기본적인 형태를 만들었다. 여기에 사용자와 상호 작용을 할 수 있도록 이벤트를 추가해 보도록 하자. 마우스를 올려 놓을 때 사각형의 색이 변경되며 해당하는 비교 서열의 뉴클레오타이드 코드도 변화하도록 하자. 간단히, 이전에 만든 사각형에 이벤트를 on() 메쏘드를 추가한다.</p>
 <pre><code>svg.append("g")
 
@@ -154,10 +154,10 @@ var svg = d3.select(".chart")
 
         });
 </code></pre>
-<h2>정리</h2>
+<h2 id="_3">정리</h2>
 <p>대략 100 줄로 데이터를 쉽게 볼 수 있도록 하였다. 가장 기본적인 형태이지만 크기 조절(scaling)이나 긴 서열에 대해 손을 보면 좀 더 그럴사한 시각화되며 약간의 시간만 더 투자하면 된다. </p>
 <p>전체 소스는 <a href="https://github.com/brenden17/d3">https://github.com/brenden17/d3</a> 에서 볼 수 있다.</p>
-<h2>Reference</h2>
+<h2 id="reference">Reference</h2>
 <ul>
 <li>
 <p>http://d3js.org/</p>

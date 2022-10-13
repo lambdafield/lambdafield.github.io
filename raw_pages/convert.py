@@ -2,6 +2,7 @@
 import sys
 import glob
 from datetime import datetime
+from operator import attrgetter
 
 import markdown
 from jinja2 import Environment, FileSystemLoader
@@ -38,7 +39,7 @@ class Page:
         self.tags_html = '<span class="tags">' + self.tags + '</span>'
 
         self.content = content.strip()
-        self.content_html = markdown.markdown(content)
+        self.content_html = markdown.markdown(content, extensions=['extra', 'smarty', 'toc'])
 
 
     def save_as_html(self):
@@ -55,9 +56,6 @@ class Page:
 
         with open('../page/'+outfilename, mode='w', encoding='utf-8') as wf:
             wf.write(content)
-
-    def __cmp__(self, other):
-        return cmp(self.ddate, other.ddate)
 
 def get_newkey():
     raw_files = glob.glob('*.txt')
@@ -76,7 +74,7 @@ def read_pages():
 
         pages.append(p)
         
-    pages.sort(key=lambda p: p.ddate, reverse=True)
+    pages.sort(key=attrgetter('ddate'), reverse=False)
     content = template2.render(
         pages=pages,
     )
