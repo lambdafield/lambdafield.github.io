@@ -53,7 +53,7 @@ class Page:
         # with open('./temp/'+title+'.html', mode='w', encoding='utf-8') as wf:
         outfilename = self.title + '.html'
 
-        with open('../pages/'+outfilename, mode='w', encoding='utf-8') as wf:
+        with open('../page/'+outfilename, mode='w', encoding='utf-8') as wf:
             wf.write(content)
 
     def __cmp__(self, other):
