@@ -64,7 +64,7 @@ def convert_page(infilename):
 
         # with open('./temp/'+title+'.html', mode='w', encoding='utf-8') as wf:
         outfilename = infilename.split('.')[0]+'.html'
-        with open('../'+outfilename, mode='w', encoding='utf-8') as wf:
+        with open('../pages'+outfilename, mode='w', encoding='utf-8') as wf:
             wf.write(content)
             # print(f'... wrote {infilename}')
 
