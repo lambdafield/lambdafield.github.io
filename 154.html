@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Lambdafield</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="static/css/cover.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Lambdafield</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="#">Home</a>
+            <a class="nav-link" href="pages/about.html">About</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        
+        <h2>mongodb-데이터를-pandas-데이터로-변환하기</h2>
+        <span class="created-date">01/19/2014, 20:23:27</span>
+        
+        <p>mongodb를 사용하다 보면 pandas로 바로 가져와 작업해 보고 싶다는 생각이 가끔 들때가 있다.</p>
+<p>아무리 데이터베이스가 좋다하더라도 메모리에 올려 작업하는 것보다 쉽지는 않기 때문이다.</p>
+<p>데이터를 그때 그때 변환하는 방법도 좋지만 아예 처음부터 파이썬에서 mongodb 클래스를 선언할 때 관련 메쏘드를 넣으면 어떨까?</p>
+<p>가장 먼저 고려할 사항은 클래스 이름과 실제 데이터베이스의 collection 이름의 차이이다. 보통 파이썬에서 클래스 이름은 다음과 같은 낙타명명법이다. </p>
+<pre><code>class MyFriendName:
+
+    pass
+</code></pre>
+<p>하지만 mongodb에서 collection 이름은 my_friend_name으로 사용된다.</p>
+<p>변환 함수를 우선 만든다.</p>
+<pre><code>def convertname(name):
+
+    newname = [name[0].lower()]
+
+    A, Z = ord('A')-1, ord('Z')-1
+
+    for c in name[1:]:
+
+        if A &lt; ord(c) &lt; Z:
+
+            c = '_' + c.lower()
+
+        newname.append(c)
+
+    return ''.join(newname)
+</code></pre>
+<p>그리고 메타 클래스 하나를 정의하여 클래스에 자동으로 관련 메쏘드가 생기도록 한다.</p>
+<pre><code>class MetaMongoBase(type):
+
+    def __new__(meta, classname, supers, classdict):
+
+        if 'mongometa'in classdict:
+
+            mongometa = classdict['mongometa']
+
+            dbname = mongometa.get('dbname', None)
+
+            o = mongometa.get('option', {})
+
+            collection = convertname(classname)
+
+            classdict['get_dataframe'] = lambda self:MongoHelper.get_dataframe(dbname, collection, o)
+
+        return type.__new__(meta, classname, supers, classdict)
+
+
+
+class MongoBase(object):
+
+    __metaclass__ = MetaMongoBase
+
+    def __init__(self):
+
+        pass
+
+
+
+class Year(MongoBase):
+
+    mongometa = {'dbname':'yearlybalancedb', 'option':{'field':['dayat']}}
+
+    #mongometa = {'dbname':'yearlybalancedb'}
+
+    def __init__(self):
+
+        pass
+</code></pre>
+<p>이렇게 하면 자동으로 선언한 클래스의 mongometa정보로 관련 메쏘드를 만든다.</p>
+<p>그런데 사실, get_dataframe 메쏘드는 MongoHelper.get_dataframe 메쏘드이다.</p>
+<pre><code>@staticmethod
+
+def get_collection(dbname, collection_name):
+
+   try:
+
+       conn = Connection()
+
+       db = database.Database(conn, dbname)
+
+       return db[collection_name]
+
+   except Exception as e:
+
+       print(str(e))
+
+
+
+@staticmethod
+
+def get_dataframe(dbname, collection_name, option={}):
+
+   try:
+
+       c = MongoHelper.get_collection(dbname, collection_name)
+
+       return pd.DataFrame(list(c.find(**option)))
+
+   except Exception as e:
+
+       print(str(e))
+</code></pre>
+<p>mongodb에서 pandas의 dataframe으로 변환하는 핵심은 위 코드이다. 다른 코드는 좀 편한게 하는 코드일 뿐 변환하는 부분은 이게 전부이다.</p>
+<p>전체 코드는 다음에서 볼 수 있다.</p>
+<pre><code>https://github.com/brenden17/infinity/blob/master/test/mongoengine/common.py
+</code></pre>
+        <span class="tags">python
+</span>
+        
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="static/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="static/js/popper.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+  </body>
+</html>

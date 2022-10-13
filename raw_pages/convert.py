@@ -9,8 +9,9 @@ from jinja2 import Environment, FileSystemLoader
 
 environment = Environment(loader=FileSystemLoader('./template'))
 template = environment.get_template('base.html')
+template2 = environment.get_template('index_base.html')
 
-pages_dict = {}
+
 
 def get_newkey():
     raw_files = glob.glob('*.txt')
@@ -20,11 +21,20 @@ def read_pages():
     raw_files = glob.glob('*.txt')
     total = len(raw_files)
 
+    pages_dict = {}
+
     for i, filename in enumerate(raw_files):
         title = convert_page(filename)
         pages_dict[filename] = title
-        print_progress_bar(i, total)
-        break
+
+        if i>10: break
+
+    content = template2.render(
+        pages_dict=pages_dict,
+    )
+
+    with open('../index.html', mode='w', encoding='utf-8') as wf:
+        wf.write(content)
 
 def convert_page(filename):
     with open(filename) as rf:
@@ -53,7 +63,7 @@ def convert_page(filename):
         )
 
         # with open('./temp/'+title+'.html', mode='w', encoding='utf-8') as wf:
-        with open('./temp/'+filename.split('.')[0]+'.html', mode='w', encoding='utf-8') as wf:
+        with open('../'+filename.split('.')[0]+'.html', mode='w', encoding='utf-8') as wf:
             wf.write(content)
             # print(f'... wrote {filename}')
 
