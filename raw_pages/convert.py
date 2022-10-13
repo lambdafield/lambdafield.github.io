@@ -12,6 +12,33 @@ template = environment.get_template('base.html')
 template2 = environment.get_template('index_base.html')
 
 
+class Page:
+    def __init__(self, lines):
+        title = lines[0].strip()
+        title_html = '<h2>' + title + '</h2>'
+        d = '<span class="created-date">' + lines[1].strip() + '</span>'
+        
+        # category = '<span class="category">' + lines[2].split(',') + '</span>'
+        # tags = '<span class="tags">' + lines[3].split(',') + '</span>'
+        
+        category = '<span class="category">' + lines[2] + '</span>'
+        tags = '<span class="tags">' + lines[3] + '</span>'
+        
+
+        content = '\n'.join(lines[4:])
+        content_html = markdown.markdown(content)
+    
+        self.create(title, d, category, tags, content)
+
+
+    def create(self, title, d, category, tags, content):
+        self.title = title.strip()
+        self.d = d.strip()
+        self.category = category.strip()
+        self.tags = tags.strip()
+        self.content = content.strip()
+
+
 
 def get_newkey():
     raw_files = glob.glob('*.txt')
@@ -38,20 +65,20 @@ def read_pages():
 
 def convert_page(infilename):
     with open(infilename) as rf:
-        txt = rf.readlines()
+        lines = rf.readlines()
 
-        title = txt[0].strip()
+        title = lines[0].strip()
         title_html = '<h2>' + title + '</h2>'
-        d = '<span class="created-date">' + txt[1].strip() + '</span>'
+        d = '<span class="created-date">' + lines[1].strip() + '</span>'
         
-        # category = '<span class="category">' + txt[2].split(',') + '</span>'
-        # tags = '<span class="tags">' + txt[3].split(',') + '</span>'
+        # category = '<span class="category">' + lines[2].split(',') + '</span>'
+        # tags = '<span class="tags">' + lines[3].split(',') + '</span>'
         
-        category = '<span class="category">' + txt[2] + '</span>'
-        tags = '<span class="tags">' + txt[3] + '</span>'
+        category = '<span class="category">' + lines[2] + '</span>'
+        tags = '<span class="tags">' + lines[3] + '</span>'
         
 
-        content = '\n'.join(txt[4:])
+        content = '\n'.join(lines[4:])
         content_html = markdown.markdown(content)
 
         content = template.render(
@@ -64,7 +91,7 @@ def convert_page(infilename):
 
         # with open('./temp/'+title+'.html', mode='w', encoding='utf-8') as wf:
         outfilename = infilename.split('.')[0]+'.html'
-        with open('../pages'+outfilename, mode='w', encoding='utf-8') as wf:
+        with open('../pages/'+outfilename, mode='w', encoding='utf-8') as wf:
             wf.write(content)
             # print(f'... wrote {infilename}')
 

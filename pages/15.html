@@ -31,11 +31,11 @@
 
       <main role="main" class="inner cover">
         
-        <h2>대답없는-juliabox</h2>
-        <span class="created-date">07/27/2019, 01:01:38</span>
+        <h2>writer</h2>
+        <span class="created-date">10/30/2020, 03:27:21</span>
         
-        <p>https://www.juliabox.com/ 는 왜 일주일에 한번씩 죽는 건가?</p>
-<p>도대체 왜일까?</p>
+        <p>작가, writer</p>
+<p>: 글을 쓰는 사람. 예전에는 업으로 하는 사람을 작가라 했지만, 요즘에는 누구에게나 작가라 함.</p>
         <span class="tags">
 </span>
         
@@ -55,5 +55,10 @@
     <script src="static/js/jquery-3.2.1.slim.min.js"></script>
     <script src="static/js/popper.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $("main").find("a").each(function(){
+        $(this).attr("href", $(this).attr("href") + ".html");
+      });
+    </script>
   </body>
 </html>
