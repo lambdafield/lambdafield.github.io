@@ -30,7 +30,8 @@ class Page:
 
         self.d = d.strip()
         self.ddate = datetime.strptime(self.d, '%m/%d/%Y, %H:%M:%S')
-        self.d_html = '<span class="created-date">' + self.d + '</span>'
+        self.d__post_html = '<div class="created-date">' + self.d + '</div>'
+        self.d__list_html = '<span class="created-date">' + self.d + '</span>'
 
         self.category = category.strip()
         self.category_html = '<span class="category">' + self.category + '</span>'
