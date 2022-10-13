@@ -1,0 +1,6 @@
+deep-learning
+08/21/2018, 02:30:45
+
+
+deep learning
+:   machine learning의 한 종류, 신경망을 모델화하여 함. 

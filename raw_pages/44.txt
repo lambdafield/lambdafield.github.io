@@ -1,0 +1,22 @@
+빅데이터를-지배하는-통계의-힘
+08/31/2018, 00:19:25
+book
+bigdata,statistics,math
+빅데이터를 지배하는 통계의 힘
+:   2013년 7월 30일
+:   니시우치 히로무
+:   비전코리아
+
+![alt text](http://lh3.googleusercontent.com/farLQCsSRcD-tsxnwe-eX8eYUDSFO0GcUcETey3D8rykghImVTs21dSuMqEl0ilOpw8bCuyAhPUy3UdnDplQRoojdxdhZaY=s256 "image")
+
+통계는 빅데이터를 지배할 수 있는가?
+
+통계, 과연 믿을 수 있는가?
+
+주사위를 100만번 던져 생긴 통계는 신용할 수 있다. 통제된 돼지의 출산 통계를 믿느냐고 하면 이 또한 믿는다고 할 테다. 하지만 선거에 대한 예비 통계는 신용할 수 없다. 왜나하면 데이터는 통제되지 않았을 테고 마음대로 통계의 한 측면을 설명했을 수도 있다. [틀리지 않는 법 수학적 사고의 힘](/page/%ED%8B%80%EB%A6%AC%EC%A7%80-%EC%95%8A%EB%8A%94-%EB%B2%95-%EC%88%98%ED%95%99%EC%A0%81-%EC%82%AC%EA%B3%A0%EC%9D%98-%ED%9E%98,-How-not-to-be-wrong-The-power-of-Mathematical-thinking)은 통계에 대한 잘못된 해석을 잘 보여준다. 
+
+편향된 질문, 데이터 수집 방법, 해석 등 각 요소에서 선거에 대한 통계는 오염될 수 있다.
+
+이제 우리는 적용할 분야에 따라 빅데이터와 통계를 달리 사용해야 한다. 통계는 싸고 빠르다. 빅데이터는 비싸고 느리지만 정확하다.
+
+**통계를 너무 신용하지 말자**.
