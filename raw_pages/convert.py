@@ -30,8 +30,8 @@ class Page:
 
         self.d = d.strip()
         self.ddate = datetime.strptime(self.d, '%m/%d/%Y, %H:%M:%S')
-        self.d__post_html = '<div class="created-date">' + self.d + '</div>'
-        self.d__list_html = '<span class="created-date">' + self.d + '</span>'
+        self.d_post_html = '<div class="created-date">' + self.d + '</div>'
+        self.d_list_html = '<span class="created-date">' + self.d + '</span>'
 
         self.category = category.strip()
         self.category_html = '<span class="category">' + self.category + '</span>'
@@ -46,7 +46,7 @@ class Page:
     def save_as_html(self):
         content = template.render(
             title=self.title_html,
-            d=self.d_html,
+            d=self.d_post_html,
             category=self.category_html,
             content_html=self.content_html,
             tags=self.tags_html,

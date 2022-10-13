@@ -33,7 +33,7 @@
         <h2>Pages</h2>
         <ul>
         {% for p in pages|reverse %}
-          <li> <a href="page/{{ p.title }}">{{ p.title }}</a> {{ p.d_html }}</li>
+          <li> <a href="page/{{ p.title }}">{{ p.title }}</a> {{ p.d_list_html }}</li>
         {% endfor %}
         </ul>
               
