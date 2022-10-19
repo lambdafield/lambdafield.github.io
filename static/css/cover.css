@@ -41,6 +41,13 @@ dl {
   float: right;
   background: #efefef;
   padding: 1rem;
+  margin: 1.3rem;
+}
+
+dt {
+  text-align: left;
+  margin-bottom: 10px;
+}
 }
 dd p {
   font-size: 1rem;
