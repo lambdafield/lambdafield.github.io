@@ -14,13 +14,14 @@ template2 = environment.get_template('index_base.html')
 
 
 class Page:
-    def __init__(self, lines):
+    def __init__(self, lines, infilename):
         title = lines[0].strip()
         d = lines[1].strip()
         category = lines[2]
         tags = lines[3]
         content = '\n'.join(lines[4:])
-    
+
+        self.infilename = infilename
         self.create(title, d, category, tags, content)
 
 
@@ -50,6 +51,7 @@ class Page:
             category=self.category_html,
             content_html=self.content_html,
             tags=self.tags_html,
+            idx=self.infilename,
         )
 
         # with open('./temp/'+title+'.html', mode='w', encoding='utf-8') as wf:
@@ -86,7 +88,7 @@ def read_pages():
 def convert_page(infilename):
     with open(infilename) as rf:
         lines = rf.readlines()
-        return Page(lines)
+        return Page(lines, infilename)
 
 
 def print_progress_bar(iteration, total, prefix='', suffix='', decimals=1, length=20, fill='='):
