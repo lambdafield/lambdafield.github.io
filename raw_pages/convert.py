@@ -44,7 +44,7 @@ class Page:
         self.content_html = markdown.markdown(content, extensions=['extra', 'smarty', 'toc'])
 
 
-    def save_as_html(self):
+    def save_as_html(self, pre_page, next_page):
         content = template.render(
             title=self.title_html,
             d=self.d_post_html,
@@ -52,6 +52,8 @@ class Page:
             content_html=self.content_html,
             tags=self.tags_html,
             idx=self.infilename,
+            pre_page=pre_page.title_html,
+            next_page=next_page.title_html
         )
 
         # with open('./temp/'+title+'.html', mode='w', encoding='utf-8') as wf:
@@ -66,18 +68,31 @@ def get_newkey():
 
 def read_pages():
     raw_files = glob.glob('*.txt')
-    total = len(raw_files)
+    total_page_count = len(raw_files)
 
     # pages_dict = {}
     pages = []
 
-    for i, infilename in enumerate(raw_files):
-        p = convert_page(infilename)
-        p.save_as_html()
+    pre_page = None
+    next_page = None
 
+    for infilename in raw_files:
+        p = convert_page(infilename)
         pages.append(p)
         
     pages.sort(key=attrgetter('ddate'), reverse=False)
+
+    for i, page in enumerate(pages):
+
+        if i > 0:
+            pre_page = pages[i-1]
+
+        if i < total_page_count:
+            next_page = pages[i+1]
+
+        p.save_as_html(pre_page, next_page)
+
+
     content = template2.render(
         pages=pages,
     )
