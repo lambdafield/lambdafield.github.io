@@ -52,8 +52,8 @@ class Page:
             content_html=self.content_html,
             tags=self.tags_html,
             idx=self.infilename,
-            pre_page=pre_page.title_html,
-            next_page=next_page.title_html
+            pre_page=pre_page,
+            next_page=next_page
         )
 
         # with open('./temp/'+title+'.html', mode='w', encoding='utf-8') as wf:
@@ -87,10 +87,10 @@ def read_pages():
         if i > 0:
             pre_page = pages[i-1]
 
-        if i < total_page_count:
+        if i < total_page_count-1:
             next_page = pages[i+1]
 
-        p.save_as_html(pre_page, next_page)
+        page.save_as_html(pre_page, next_page)
 
 
     content = template2.render(
