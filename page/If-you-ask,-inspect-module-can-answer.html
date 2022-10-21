@@ -38,7 +38,7 @@
         <span class="created-date">01/12/2014, 19:03:07</span> | <span class="category">python</span> | <span class="tags">inspect</span> | 165.txt
         </div>
         <div class="page-content">
-        <p>When you get an object, you might wonder what it is. First off, you can ask whether isfunction or isclass. If it is function, what are arguments? </p>
+        <p>When you get an object, you might wonder what it is. First off, you can ask whether a isfunction or an isclass. If it is a function, what are arguments?</p>
 <pre><code>#target function
 
 def read(arg1, arg2='math'):
@@ -59,8 +59,8 @@ if inspect.isfunction(read):
 
     print('defaults:', arg_spec[3])
 </code></pre>
-<p>Also, you can check Class Hierachies with getclasstree() and getmro().</p>
-<p>When I create new class, I wonder what is different between using type function and declare class. I assume that one of then has less method.</p>
+<p>Also, you can check Class Hierarchies with getclasstree() and getmro().</p>
+<p>When I create a new class, I wonder what is the difference between using type function and declaring class. I assume that one of them has less methods.</p>
 <pre><code>from inspect from getmembers
 
 class X(object):
@@ -80,8 +80,8 @@ print(getmembers(X))
 print(getmembers(y))
 </code></pre>
 <p>Both of them are exactly the same. Two class objects have the same methods.</p>
-<p>However, I know the process of creation is a little bit different. Which means, when you declare class and then create, X class calls type.<strong>new</strong>(), type.<strong>init</strong>(). On the other hand, type function does not calls type.<strong>init</strong>().</p>
-<p>Inspect module is like an oracle.</p>
+<p>However, I know the process of creation is a little bit different. Which means, when you declare class and then create, X class calls type.<strong>new</strong>(), type.<strong>init</strong>(). On the other hand, the type function does not call type.<strong>init</strong>().</p>
+<p>The Inspect module is like an oracle.</p>
         </div>
         <div class="page-nav">
           
