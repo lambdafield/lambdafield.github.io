@@ -41,7 +41,12 @@
         {{ content_html }}
         </div>
         <div class="page-nav">
-        Pre <a href="{{ pre_page.title }}">{{ pre_page.title }}</a>, Next <a href="{{ next_page.title }}">{{ next_page.title }}</a>
+          {% if pre_page %}
+          <span>Pre <a href="{{ pre_page.title }}">{{ pre_page.title }}</a></span>
+          {% endif %}
+          {% if next_page %}
+          , <span>Next <a href="{{ next_page.title }}">{{ next_page.title }}</a></span>
+          {% endif %}
         </div>
       </main>
 
