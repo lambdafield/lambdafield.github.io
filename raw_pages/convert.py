@@ -141,7 +141,8 @@ def read_pages():
     for k in pm.all_meta.keys():
         category_pages = list(pm.all_meta[k])
         category_pages = category_pages.sort(key=attrgetter('ddate'), reverse=False)
-
+        print(k)
+        print(category_pages)
         content = template3.render(
             title=str(k),
             pages=category_pages,
