@@ -59,9 +59,11 @@ class Page:
 
         self.category = category.strip()
         self.category_html = '<span class="category">' + self.category + '</span>'
+        self.category_link = '<span class="category">' + ','.join([f'<a href="{c}">{c}</a>' for c in self.category.split(',')]) + '</span>'
 
         self.tags = tags.strip()
         self.tags_html = '<span class="tags">' + self.tags + '</span>'
+        self.tags_link = '<span class="category">' + ','.join([f'<a href="{t}">{t}</a>' for t in self.tags.split(',')]) + '</span>'
 
         self.raw_content = raw_content
         self.set_content_html()
@@ -71,9 +73,9 @@ class Page:
         content = template.render(
             title=self.title_html,
             d=self.d_post_html,
-            category=self.category_html,
+            category=self.category_link,
             content_html=self.content_html,
-            tags=self.tags_html,
+            tags=self.tags_link,
             idx=self.infilename,
             pre_page=pre_page,
             next_page=next_page
