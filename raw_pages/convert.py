@@ -59,11 +59,11 @@ class Page:
 
         self.category = category.strip()
         self.category_html = '<span class="category">' + self.category + '</span>'
-        self.category_link = '<span class="category">' + ','.join([f'<a href="{c}">{c}</a>' for c in self.category.split(',')]) + '</span>'
+        self.category_link = '<span class="category">' + ' '.join([f'<a href="/page/category/{c}">{c}</a>' for c in self.category.split(',')]) + '</span>'
 
         self.tags = tags.strip()
         self.tags_html = '<span class="tags">' + self.tags + '</span>'
-        self.tags_link = '<span class="category">' + ','.join([f'<a href="{t}">{t}</a>' for t in self.tags.split(',')]) + '</span>'
+        self.tags_link = '<span class="category">' + ' '.join([f'<a href="/page/category/{t}">{t}</a>' for t in self.tags.split(',')]) + '</span>'
 
         self.raw_content = raw_content
         self.set_content_html()
@@ -143,7 +143,7 @@ def read_pages():
             title=str(k),
             pages=pm.all_meta[k],
         )
-        with open(f'../{k}.html', mode='w', encoding='utf-8') as wf:
+        with open(f'../page/category/{k}.html', mode='w', encoding='utf-8') as wf:
             wf.write(content)
 
 
