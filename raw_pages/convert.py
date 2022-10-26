@@ -12,6 +12,7 @@ from jinja2 import Environment, FileSystemLoader
 environment = Environment(loader=FileSystemLoader('./template'))
 template = environment.get_template('base.html')
 template2 = environment.get_template('index_base.html')
+template3 = environment.get_template('category_base.html')
 
 
 class PageMeta:
@@ -136,12 +137,14 @@ def read_pages():
 
     # all_meta
     pm = PageMeta(pages)
-    for k in pm.all_meta.keys():
-        print(str(k), pm.all_meta[k])
 
-        content = template2.render(
+    for k in pm.all_meta.keys():
+        category_pages = list(pm.all_meta[k])
+        category_pages = category_pages.sort(key=attrgetter('ddate'), reverse=False)
+
+        content = template3.render(
             title=str(k),
-            pages=pm.all_meta[k],
+            pages=category_pages,
         )
         with open(f'../category/{k}.html', mode='w', encoding='utf-8') as wf:
             wf.write(content)
