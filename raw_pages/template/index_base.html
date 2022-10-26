@@ -33,7 +33,7 @@
         <h2>Pages</h2>
         <ul class="page-list">
         {% for p in pages|reverse %}
-          <li> <span class="page-item-title"><a href="page/{{ p.title }}">{{ p.title }}</a><span> <span class="page-item-date">{{ p.d_list_html }}<span></li>
+          <li> <span class="page-item-title"><a href="page/{{ p.title }}">{{ p.title }}</a><span> <span class="page-item_cate">{{ p.category }},{{ p.tags }}</span><span class="page-item-date">{{ p.d_list_html }}<span></li>
         {% endfor %}
         </ul>
               
