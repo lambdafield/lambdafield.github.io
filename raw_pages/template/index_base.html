@@ -31,9 +31,9 @@
 
       <main role="main" class="inner cover">
         <h2>Pages</h2>
-        <ul>
+        <ul class="page-list">
         {% for p in pages|reverse %}
-          <li> <a href="page/{{ p.title }}">{{ p.title }}</a> {{ p.d_list_html }}</li>
+          <li> <span class="page-item-title"><a href="page/{{ p.title }}">{{ p.title }}</a><span> <span class="page-item-date">{{ p.d_list_html }}<span></li>
         {% endfor %}
         </ul>
               
