@@ -3,6 +3,7 @@ import sys
 import glob
 from datetime import datetime
 from operator import attrgetter
+from collections import defaultdict
 
 import markdown
 from jinja2 import Environment, FileSystemLoader
@@ -13,19 +14,41 @@ template = environment.get_template('base.html')
 template2 = environment.get_template('index_base.html')
 
 
+class PageMeta:
+    def __init__(self, pages):
+        self.pages = pages
+        self.all_category = defaultdict(set)
+        self.all_tag = defaultdict(set)
+        self.all_meta = defaultdict(set)
+        self.l = None
+
+        for page in self.pages:
+            categories = page.category.split(',')
+            
+            for c in categories:
+                self.all_meta[c].add(page)
+
+            tags = page.tags.split(',')
+
+            for t in tags:
+                self.all_meta[t].add(page)
+
+
+
 class Page:
     def __init__(self, lines, infilename):
         title = lines[0].strip()
         d = lines[1].strip()
         category = lines[2]
         tags = lines[3]
-        content = '\n'.join(lines[4:])
+        # content = '\n'.join(lines[4:])
+        raw_content = lines[4:]
 
         self.infilename = infilename
-        self.create(title, d, category, tags, content)
+        self.create(title, d, category, tags, raw_content)
 
 
-    def create(self, title, d, category, tags, content):
+    def create(self, title, d, category, tags, raw_content):
         self.title = title.strip()
         self.title_html = '<h2>' + self.title + '</h2>'
 
@@ -40,8 +63,8 @@ class Page:
         self.tags = tags.strip()
         self.tags_html = '<span class="tags">' + self.tags + '</span>'
 
-        self.content = content.strip()
-        self.content_html = markdown.markdown(content, extensions=['extra', 'smarty', 'toc'])
+        self.raw_content = raw_content
+        self.set_content_html()
 
 
     def save_as_html(self, pre_page, next_page):
@@ -61,6 +84,14 @@ class Page:
 
         with open('../page/'+outfilename, mode='w', encoding='utf-8') as wf:
             wf.write(content)
+
+    def set_content_html(self):
+        # remove old image
+        self.raw_content = [line for line in self.raw_content if line.find('googleusercontent') < 0]
+
+        self.content = '\n'.join(self.raw_content)
+        self.content = self.content.strip()
+        self.content_html = markdown.markdown(self.content, extensions=['extra', 'smarty', 'toc'])
 
 def get_newkey():
     raw_files = glob.glob('*.txt')
@@ -92,13 +123,27 @@ def read_pages():
 
         page.save_as_html(pre_page, next_page)
 
-
+    # index html
     content = template2.render(
+        title='Page',
         pages=pages,
     )
 
     with open('../index.html', mode='w', encoding='utf-8') as wf:
         wf.write(content)
+
+    # all_meta
+    pm = PageMeta(pages)
+    for k in pm.all_meta.keys():
+        print(str(k), pm.all_meta[k])
+
+        content = template2.render(
+            title=str(k),
+            pages=pm.all_meta[k],
+        )
+        with open(f'../{k}.html', mode='w', encoding='utf-8') as wf:
+            wf.write(content)
+
 
 def convert_page(infilename):
     with open(infilename) as rf:
