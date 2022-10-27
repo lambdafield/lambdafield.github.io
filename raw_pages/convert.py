@@ -77,7 +77,7 @@ class Page:
             # category=self.category_link,
             # content_html=self.content_html,
             # tags=self.tags_link,
-            # idx=self.infilename,
+            idx=self.infilename,
             post=self,
             pre_page=pre_page,
             next_page=next_page
@@ -140,12 +140,8 @@ def read_pages():
     pm = PageMeta(pages)
 
     for k in pm.all_meta.keys():
-        print('22222222222222222222222222222222')
-        print(k)
         category_pages = list(pm.all_meta[k])
-        print(category_pages)
         category_pages.sort(key=attrgetter('ddate'), reverse=False)
-        print(category_pages)
 
         content = template3.render(
             title=str(k),
