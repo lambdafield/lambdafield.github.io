@@ -76,6 +76,11 @@ span.created-date-in-list {
   font-size: 1.8rem;
 }
 
+.page-content h2 {
+  font-size: 1.8rem;
+}
+
+
 ul.page-list {
   list-style-type: none;
 }
