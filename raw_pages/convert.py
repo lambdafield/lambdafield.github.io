@@ -38,7 +38,7 @@ class PageMeta:
 
 class Page:
     def __init__(self, lines, infilename):
-        title = lines[0].strip()
+        title = lines[0].strip().replace(' ', '-')
         d = lines[1].strip()
         category = lines[2]
         tags = lines[3]
@@ -52,9 +52,12 @@ class Page:
     def create(self, title, d, category, tags, raw_content):
         self.title = title.strip()
         self.title_html = '<h2>' + self.title + '</h2>'
+        self.d = d
+        if not self.d:
+            self.ddate = datetime.now()
+        else:
+            self.ddate = datetime.strptime(self.d, '%m/%d/%Y, %H:%M:%S')
 
-        self.d = d.strip()
-        self.ddate = datetime.strptime(self.d, '%m/%d/%Y, %H:%M:%S')
         self.d_post_html = '<span class="created-date">' + self.ddate.strftime('%d %b %Y') + '</span>'
         self.d_list_html = '<span class="created-date-in-list">' + self.ddate.strftime('%d %b %Y') + '</span>'
 
@@ -72,12 +75,6 @@ class Page:
 
     def save_as_html(self, pre_page, next_page):
         content = template.render(
-            # title=self.title_html,
-            # d=self.d_post_html,
-            # category=self.category_link,
-            # content_html=self.content_html,
-            # tags=self.tags_link,
-            idx=self.infilename,
             post=self,
             pre_page=pre_page,
             next_page=next_page
