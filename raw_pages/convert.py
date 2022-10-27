@@ -72,12 +72,13 @@ class Page:
 
     def save_as_html(self, pre_page, next_page):
         content = template.render(
-            title=self.title_html,
-            d=self.d_post_html,
-            category=self.category_link,
-            content_html=self.content_html,
-            tags=self.tags_link,
-            idx=self.infilename,
+            # title=self.title_html,
+            # d=self.d_post_html,
+            # category=self.category_link,
+            # content_html=self.content_html,
+            # tags=self.tags_link,
+            # idx=self.infilename,
+            post=self,
             pre_page=pre_page,
             next_page=next_page
         )

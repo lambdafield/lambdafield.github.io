@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <title>|&lambda;| {{ title }}</title>
+    <title>|&lambda;| {{ post.title }}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
@@ -32,13 +32,13 @@
       <main role="main" class="inner cover">
         
         <div class="page-title">
-        {{ title }}
+        {{ post.title_html }}
         </div>
         <div class="page-meta">
-        {{ d }} | {{ category }} | {{ tags }} | {{ idx }}
+        {{ post.d_post_html }} | {{ post.category_link }} | {{ post.tags_link }} | {{ post.idx }}
         </div>
         <div class="page-content">
-        {{ content_html }}
+        {{ post.content_html }}
         </div>
         <div class="page-nav">
           {% if pre_page %}

@@ -34,7 +34,7 @@
         <ul class="page-list">
         {% if pages %}
         {% for p in pages|reverse %}
-          <li> <span class="page-item-title"><a href="page/{{ p.title }}">{{ p.title }}</a><span> <span class="page-item_cate">{{ p.category_link }} {% if p.tags_link %},{{ p.tags_link }} {% endif %} </span><span class="page-item-date">{{ p.d_list_html }}<span></li>
+          <li> <span class="page-item-title"><a href="page/{{ p.title }}">{{ p.title }}</a><span> <span class="page-item_cate">{{ p.category_link }} {% if p.tags_link %}{{ p.tags_link }} {% endif %} </span><span class="page-item-date">{{ p.d_list_html }}<span></li>
         {% endfor %}
         {% endif %}
         </ul>
