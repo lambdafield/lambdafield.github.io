@@ -35,7 +35,6 @@ class PageMeta:
                 self.all_meta[t].add(page)
 
 
-
 class Page:
     def __init__(self, lines, infilename):
         title = lines[0].strip().replace(' ', '-')
