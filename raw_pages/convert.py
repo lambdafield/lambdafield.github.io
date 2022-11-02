@@ -4,6 +4,7 @@ import glob
 from datetime import datetime
 from operator import attrgetter
 from collections import defaultdict
+from pathlib import Path
 
 import markdown
 from jinja2 import Environment, FileSystemLoader
