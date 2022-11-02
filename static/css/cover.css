@@ -13,6 +13,7 @@ a:focus,
 a:hover {
   color: black;
   text-decoration: underline;
+  text-underline-offset: 0.3em;
 }
 
 h1, h2, h3 {
