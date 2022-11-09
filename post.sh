@@ -1,8 +1,34 @@
 #!/bin/bash
 
-if [ -z "$1" ]; then
-  c=`ls raw_pages/*.txt | wc -l`; cp raw_pages/${c}.txt raw_pages/$((${c}+1)).txt && rsub raw_pages/$((${c}+1)).txt
+if [[ -z $1 ]]; then 
+    echo "Open a new post..."
+    c=`ls raw_pages/*.txt | wc -l`; cp raw_pages/${c}.txt raw_pages/$((${c}+1)).txt && rsub raw_pages/$((${c}+1)).txt
 else
-  git config user.name "chulwook.jeon"
-  cd raw_pages && python convert.py && cd ..;git add --all && git commit -m "added" && git push origin main
+  if [[ $1 = "c" ]]; then
+    echo "Commit..."
+    git config user.name "chulwook.jeon"
+    cd raw_pages && python convert.py && cd ..;git add --all && git commit -m "added" && git push origin main
+  fi
+
+  if [[ $1 = "p" ]]; then
+    echo "Toatal post: " `ls raw_pages/*.txt | wc -l`
+  fi
+
+  if [[ $1 = "subl" ]]; then
+    echo "Open subl..."
+    c=`ls raw_pages/*.txt | wc -l`; cp raw_pages/${c}.txt raw_pages/$((${c}+1)).txt && sbul raw_pages/$((${c}+1)).txt
+  fi
+
+  if [[ $1 = "o" ]]; then
+    echo "Open subl..."
+    c=`ls raw_pages/*.txt | wc -l` && rsub raw_pages/${c}.txt
+  fi
+
+  if [[ $1 = "h" ]]; then
+    echo "option c, commit"
+    echo "option p, Toatal post"
+    echo "option subl, open with subl"
+    echo "option o, open recent post"
+  fi
+  
 fi
