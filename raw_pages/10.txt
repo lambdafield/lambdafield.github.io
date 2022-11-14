@@ -2,10 +2,10 @@
 11/13/2020, 00:57:40
 book
 apple
-> 팀 쿡, Tim Cook
-> 린더 카니
-> 다산북스 
-> 2019년 05월 20일
+팀 쿡, Tim Cook
+: 린더 카니
+: 다산북스 
+: 2019년 05월 20일
 
 ![alt text](https://search1.kakaocdn.net/thumb/C116x164.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F4941833%3Ftimestamp%3D20201112144242%3Fmoddttm=202011130922 "팀 쿡")
 
