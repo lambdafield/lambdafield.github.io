@@ -19,14 +19,20 @@ else
     c=`ls raw_pages/*.txt | wc -l`; cp raw_pages/${c}.txt raw_pages/$((${c}+1)).txt && sbul raw_pages/$((${c}+1)).txt
   fi
 
+  if [[ $1 = "n" ]]; then
+    echo "Open subl..."
+    c=`ls raw_pages/*.txt | wc -l`; cp raw_pages/${c}.txt raw_pages/$((${c}+1)).txt && rsub raw_pages/$((${c}+1)).txt
+  fi
+
   if [[ $1 = "o" ]]; then
     echo "Open subl..."
     c=`ls raw_pages/*.txt | wc -l` && rsub raw_pages/${c}.txt
   fi
 
   if [[ $1 = "h" ]]; then
-    echo "option c, commit"
+    echo "option c, Commit"
     echo "option p, Toatal post"
+    echo "option n, New post"
     echo "option subl, open with subl"
     echo "option o, open recent post"
   fi

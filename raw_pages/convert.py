@@ -126,7 +126,7 @@ def read_pages():
 
     # index html
     content = template2.render(
-        title='Page',
+        title='Pages',
         pages=pages,
     )
 
