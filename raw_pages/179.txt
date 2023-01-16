@@ -1,10 +1,10 @@
-존 메이너드 케인스
-12/12/2022, 19:36:54
+게놈 익스프레스
+01/01/2023, 19:36:54
 book
-케인스,economy
-존 메이너드 케인스
-:	재커리 D. 카터 
-:	로크미디어 
-:	2021.10.27. 
+genome,biology
+게놈 익스프레스
+:	조진호
+:	위즈덤하우스 
+:	2016.08.18. 
 
-![alt text](https://search1.kakaocdn.net/thumb/C116x164.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F5875506%3Ftimestamp%3D20221108002506%3Fmoddttm=202212120744 "존 메이너드 케인스")
+![alt text](https://search1.kakaocdn.net/thumb/C116x164.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F843105%3Ftimestamp%3D20230108141644%3Fmoddttm=202301161156 "게놈 익스프레스")
