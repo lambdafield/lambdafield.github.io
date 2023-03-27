@@ -6,7 +6,7 @@ if [[ -z $1 ]]; then
 else
   if [[ $1 = "c" ]]; then
     echo "Commit..."
-    git config user.name "chulwook.jeon"
+    git config user.name "chulwuk.jeon"
     cd raw_pages && python convert.py && cd ..;git add --all && git commit -m "added" && git push origin main
   fi
 
