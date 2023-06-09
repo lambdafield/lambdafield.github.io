@@ -3,7 +3,6 @@
 book
 biology,룰루 밀러,autobiography
 물고기는 존재하지 않는다, Why Fish Don't Exist
-물고기는 존재하지 않는다, Why Fish Don't Exist
 :	룰루 밀러
 :	곰출판
 :	2022. 12. 17.
