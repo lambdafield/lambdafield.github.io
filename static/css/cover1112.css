@@ -69,6 +69,10 @@ span.created-date-in-list {
   margin-left: 1rem;
 }
 
+.page-main {
+  min-height: 26em;
+}
+
 .page-meta {
   text-align: right;
   margin-bottom: 3rem;
@@ -172,7 +176,6 @@ body {
 
 .cover-container {
   max-width: 70em;
-  min-width: 70em;
 }
 
 /*
@@ -221,6 +224,9 @@ body {
   }
   .nav-masthead {
     float: right;
+  }
+  .cover-container {
+    min-width: 60em;
   }
 }
 
