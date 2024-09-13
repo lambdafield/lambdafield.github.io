@@ -1,5 +1,6 @@
 #!/bin/bash
 import sys
+import os
 import glob
 from datetime import datetime
 from operator import attrgetter
@@ -45,11 +46,19 @@ class Page:
         # content = '\n'.join(lines[4:])
         raw_content = lines[4:]
 
+        tabs = ''
+        print(f'./xmind/{infilename.replace(".txt", "")}.html')
+        if os.path.exists(f'./xmind/{infilename.replace(".txt", "")}.html'):
+            print('xxxxxxxxxxx')
+            with open(f'./xmind/{infilename.replace(".txt", "")}.html', mode='r', encoding='utf-8') as rf:
+                tabs = '\n'.join(rf.readlines())
+
+
         self.infilename = infilename
-        self.create(title, d, category, tags, raw_content)
+        self.create(title, d, category, tags, raw_content, tabs)
 
 
-    def create(self, title, d, category, tags, raw_content):
+    def create(self, title, d, category, tags, raw_content, tabs):
         self.title = title.strip()
         self.title_html = '<h2>' + self.title + '</h2>'
         self.d = d
@@ -70,6 +79,7 @@ class Page:
         self.tags_link = '<span class="category">' + ' '.join([f'<a href="/category/{t}">{t}</a>' for t in self.tags.split(',')]) + '</span>'
 
         self.raw_content = raw_content
+        self.tabs = tabs
         self.set_content_html()
 
 
