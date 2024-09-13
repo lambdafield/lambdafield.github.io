@@ -47,9 +47,7 @@ class Page:
         raw_content = lines[4:]
 
         tabs = ''
-        print(f'./xmind/{infilename.replace(".txt", "")}.html')
         if os.path.exists(f'./xmind/{infilename.replace(".txt", "")}.html'):
-            print('xxxxxxxxxxx')
             with open(f'./xmind/{infilename.replace(".txt", "")}.html', mode='r', encoding='utf-8') as rf:
                 tabs = '\n'.join(rf.readlines())
 

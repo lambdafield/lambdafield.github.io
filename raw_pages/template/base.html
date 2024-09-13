@@ -29,17 +29,19 @@
       </header>
 
       <main role="main" class="inner cover">
-        <div class="page-title">
-        {{ post.title_html }}
-        </div>
-        <div class="page-meta">
-        {{ post.d_post_html }} | {{ post.category_link }} | {{ post.tags_link }} | {{ post.infilename }}
-        </div>
-        <div class="page-content">
-        {{ post.content_html }}
-        </div>
-        <div class="page-content-tabs">
-        {{ post.tabs }}
+        <div class="page-main">
+          <div class="page-title">
+          {{ post.title_html }}
+          </div>
+          <div class="page-meta">
+          {{ post.d_post_html }} | {{ post.category_link }} | {{ post.tags_link }} | {{ post.infilename }}
+          </div>
+          <div class="page-content">
+          {{ post.content_html }}
+          </div>
+          <div class="page-content-tabs">
+          {{ post.tabs }}
+          </div>
         </div>
         <div class="page-nav">
           {% if pre_page %}
