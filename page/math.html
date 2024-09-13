@@ -76,7 +76,7 @@
     <script src="../static/js/popper.min.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-      $("main").find("a").each(function(){
+      $("main").find("a").not(".nav-link").each(function(){
         $(this).attr("href", $(this).attr("href") + ".html");
       });
     </script>
